@@ -16,9 +16,26 @@ Store them right in this same GitHub repo, inside `images/<material-slug>/`. Git
 
 **Tip before uploading:** resize photos to roughly 1600px on the long edge and save as JPG (quality ~80). Full-resolution camera photos (4000px+, several MB each) will work but load slowly on a customer's phone over mobile data.
 
-## 3. Adding a new material
+## 3. Adding a new material (recommended: use the Admin tool)
+Open `admin.html` — it's a form: enter the material name, category, description, drag in your photos, and click **Upload & Publish to GitHub**. It automatically:
+- slugifies the material name into a folder name (e.g. "Alaska Grey Granite" → `alaska-grey-granite`), and adds `-1`, `-2`, etc. if that slug is already taken
+- resizes and compresses each photo (max 1600px, so uploads stay fast even from a phone camera)
+- creates `images/<slug>/` and uploads the photos there
+- adds the matching entry to `materials.json`
+- shows you the final slug and the live page link when done — paste that slug straight into Label Studio's "Material Slug" field
+
+**One-time setup for the Admin tool:**
+1. On GitHub: **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**.
+2. Scope it to **only this repository**, with repository permission **Contents: Read and write**. Nothing else needed.
+3. Open `admin.html`, fill in your GitHub username, repo name (`stonedge-label-app`), and paste the token in. Click **Test Connection** to confirm.
+4. These details (including the token) are saved in that browser's local storage only — they're sent only to `api.github.com`, never anywhere else. Don't share this page publicly or hand the token to anyone outside the team; treat `admin.html` as an internal tool, not something to link customers to.
+
+Each publish creates a normal commit to your repo, so you always have full history and can revert from GitHub if needed.
+
+### Adding a material by hand (no token needed)
+If you'd rather not set up a token, you can still do it manually:
 1. Create a folder `images/<slug>/` (slug = lowercase, hyphens instead of spaces — e.g. `alaska-grey`).
-2. Add your photos there (any names — `slab-1.jpg`, `wall-application.jpg`, etc.).
+2. Add your photos there.
 3. Open `materials.json` and add an entry:
    ```json
    "alaska-grey": {
@@ -31,8 +48,7 @@ Store them right in this same GitHub repo, inside `images/<material-slug>/`. Git
      ]
    }
    ```
-4. Commit and push. GitHub Pages updates automatically within a minute or two.
-5. In **Stonedge Label Studio**, set the label's "Material Slug" field to `alaska-grey` — the QR code updates instantly to point at this material's page.
+4. Commit and push.
 
 ## 4. WhatsApp enquiry button
 Set your number once in `materials.json`:
