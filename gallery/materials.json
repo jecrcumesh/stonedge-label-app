@@ -1,0 +1,16 @@
+{
+  "companyName": "Stonedge Private Limited",
+  "whatsappNumber": "919714944008",
+  "materials": {
+    "burberry-beige": {
+      "name": "Burberry Beige",
+      "category": "Marble",
+      "description": "Imported marble with a warm beige tone and soft natural veining. Popular for flooring, wall cladding, and countertops.",
+      "images": [
+        "images/burberry-beige/slab-1.jpg",
+        "images/burberry-beige/wall-application.jpg",
+        "images/burberry-beige/floor-application.jpg"
+      ]
+    }
+  }
+}
