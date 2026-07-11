@@ -40,6 +40,20 @@
         "images/pluto-white/p4.jpeg",
         "images/pluto-white/p3.jpeg"
       ]
+    },
+    "green-lavante": {
+      "name": "Green Lavante",
+      "category": "Marble",
+      "description": "Green Lavante is a striking natural marble known for its rich, deep green tones and intricate white veins that mimic a peaceful forest landscape.",
+      "images": [
+        "images/green-lavante/img-1084.jpeg",
+        "images/green-lavante/img-1085.jpeg",
+        "images/green-lavante/img-1086.jpeg",
+        "images/green-lavante/img-1087.jpeg",
+        "images/green-lavante/img-1088.jpeg",
+        "images/green-lavante/img-1089.jpeg",
+        "images/green-lavante/img-2145.jpeg"
+      ]
     }
   }
 }
