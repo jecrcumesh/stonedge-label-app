@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Stonedge — Material Details</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161513;
+    --muted:#6f6a63;
+    --line:#e5e1d8;
+    --paper:#ffffff;
+    --whatsapp:#25D366;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter',sans-serif;color:var(--ink);background:#f7f5f1;padding-bottom:90px;}
+
+  .topbar{display:flex;align-items:center;gap:12px;padding:16px 18px;background:var(--ink);color:#fff;}
+  .topbar img{width:34px;height:34px;border-radius:50%;}
+  .topbar span{font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;letter-spacing:.02em;}
+
+  .wrap{max-width:640px;margin:0 auto;padding:18px;}
+
+  .gallery{position:relative;border-radius:14px;overflow:hidden;background:#eee;aspect-ratio:4/3;box-shadow:0 8px 24px rgba(20,18,14,.10);}
+  .gallery img{width:100%;height:100%;object-fit:cover;display:none;}
+  .gallery img.active{display:block;}
+  .gallery .nav{position:absolute;top:0;bottom:0;width:34%;display:flex;align-items:center;}
+  .gallery .nav.prev{left:0;justify-content:flex-start;padding-left:8px;}
+  .gallery .nav.next{right:0;justify-content:flex-end;padding-right:8px;}
+  .gallery .nav-btn{width:32px;height:32px;border-radius:50%;background:rgba(22,21,19,.55);color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;}
+  .dots{display:flex;justify-content:center;gap:6px;margin-top:10px;}
+  .dots span{width:6px;height:6px;border-radius:50%;background:#d8d3c6;}
+  .dots span.active{background:var(--ink);}
+
+  .thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto;padding-bottom:2px;}
+  .thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px;flex:0 0 auto;opacity:.55;cursor:pointer;border:2px solid transparent;}
+  .thumbs img.active{opacity:1;border-color:var(--ink);}
+
+  .meta{margin-top:20px;}
+  .category{display:inline-block;font-family:'Poppins',sans-serif;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border:1px solid var(--line);padding:4px 10px;border-radius:20px;}
+  h1{font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;margin:10px 0 6px;letter-spacing:.01em;}
+  .desc{font-size:14.5px;line-height:1.6;color:#3a3733;margin-top:8px;}
+
+  .lotinfo{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--muted);display:none;}
+  .lotinfo b{color:var(--ink);}
+
+  .cta-bar{
+    position:fixed;bottom:0;left:0;right:0;
+    background:#fff;border-top:1px solid var(--line);
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    display:flex;justify-content:center;
+  }
+  .wa-btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;max-width:600px;
+    background:var(--whatsapp);color:#fff;
+    font-family:'Poppins',sans-serif;font-weight:600;font-size:15.5px;
+    padding:13px;border-radius:10px;text-decoration:none;
+    box-shadow:0 6px 16px rgba(37,211,102,.35);
+  }
+  .wa-btn svg{width:20px;height:20px;flex-shrink:0;}
+
+  .notfound{max-width:480px;margin:80px auto;text-align:center;padding:0 20px;}
+  .notfound h2{font-family:'Poppins',sans-serif;}
+  .notfound p{color:var(--muted);font-size:14px;line-height:1.6;}
+
+  .loading{text-align:center;padding:80px 20px;color:var(--muted);font-size:14px;}
+</style>
+</head>
+<body>
+
+<div class="topbar" id="topbar" style="display:none;">
+  <img id="topLogo" src="" alt="">
+  <span id="topCompany">Stonedge</span>
+</div>
+
+<div id="loading" class="loading">Loading…</div>
+
+<div class="wrap" id="content" style="display:none;">
+  <div class="gallery" id="gallery">
+    <div class="nav prev" onclick="prevImg()"><button class="nav-btn" aria-label="Previous">‹</button></div>
+    <div class="nav next" onclick="nextImg()"><button class="nav-btn" aria-label="Next">›</button></div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="thumbs" id="thumbs"></div>
+
+  <div class="meta">
+    <span class="category" id="category">Marble</span>
+    <h1 id="matName">Material Name</h1>
+    <div class="desc" id="matDesc"></div>
+  </div>
+
+  <div class="lotinfo" id="lotinfo"></div>
+</div>
+
+<div id="notfoundBlock" class="notfound" style="display:none;">
+  <h2>Material not found</h2>
+  <p>We couldn't find details for this item. Please contact us directly and quote the lot number on your label.</p>
+</div>
+
+<div class="cta-bar" id="ctaBar" style="display:none;">
+  <a href="#" id="waBtn" class="wa-btn" target="_blank" rel="noopener">
+    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.16 0 0 7.16 0 16c0 2.82.74 5.47 2.03 7.76L0 32l8.46-2.22A15.9 15.9 0 0 0 16 32c8.84 0 16-7.16 16-16S24.84 0 16 0zm0 29.09c-2.5 0-4.85-.68-6.87-1.87l-.49-.29-5.02 1.32 1.34-4.9-.32-.5A13.06 13.06 0 0 1 2.91 16C2.91 8.77 8.77 2.91 16 2.91S29.09 8.77 29.09 16 23.23 29.09 16 29.09zm7.17-9.8c-.39-.2-2.32-1.14-2.68-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.46.29-.85.1-.39-.2-1.64-.6-3.13-1.93-1.16-1.03-1.94-2.31-2.17-2.7-.23-.39-.02-.6.17-.8.18-.18.39-.46.59-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.88-2.12-1.2-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.49-.01-.75-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.26s1.4 3.78 1.6 4.04c.2.26 2.75 4.2 6.66 5.89.93.4 1.66.64 2.23.82.94.3 1.79.26 2.46.16.75-.11 2.32-.95 2.65-1.87.33-.92.33-1.7.23-1.87-.1-.16-.36-.26-.75-.46z"/></svg>
+    <span id="waLabel">Enquire on WhatsApp</span>
+  </a>
+</div>
+
+<script>
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('slug') || params.get('m');
+
+  fetch('materials.json')
+    .then(r => r.json())
+    .then(data => {
+      document.getElementById('loading').style.display = 'none';
+      const topbar = document.getElementById('topbar');
+      topbar.style.display = 'flex';
+      document.getElementById('topCompany').textContent = data.companyName || 'Stonedge';
+      if(data.logo){ document.getElementById('topLogo').src = data.logo; }
+      else { document.getElementById('topLogo').style.display = 'none'; }
+
+      const mat = slug && data.materials ? data.materials[slug] : null;
+
+      if(!mat){
+        document.getElementById('notfoundBlock').style.display = 'block';
+        return;
+      }
+
+      document.getElementById('content').style.display = 'block';
+      document.getElementById('ctaBar').style.display = 'flex';
+      document.getElementById('category').textContent = mat.category || '';
+      document.getElementById('matName').textContent = mat.name || slug;
+      document.getElementById('matDesc').textContent = mat.description || '';
+      document.title = (mat.name || 'Material') + ' — Stonedge';
+
+      // Gallery
+      const images = (mat.images && mat.images.length) ? mat.images : [];
+      const gallery = document.getElementById('gallery');
+      const dotsWrap = document.getElementById('dots');
+      const thumbsWrap = document.getElementById('thumbs');
+      let current = 0;
+
+      if(images.length === 0){
+        gallery.style.display = 'none';
+      } else {
+        images.forEach((src, i) => {
+          const img = document.createElement('img');
+          img.src = src;
+          img.className = i === 0 ? 'active' : '';
+          img.alt = mat.name || '';
+          gallery.appendChild(img);
+
+          const dot = document.createElement('span');
+          if(i === 0) dot.className = 'active';
+          dotsWrap.appendChild(dot);
+
+          const th = document.createElement('img');
+          th.src = src;
+          th.className = i === 0 ? 'active' : '';
+          th.addEventListener('click', () => show(i));
+          thumbsWrap.appendChild(th);
+        });
+      }
+
+      function show(i){
+        const imgs = gallery.querySelectorAll('img');
+        const dots = dotsWrap.querySelectorAll('span');
+        const thumbs = thumbsWrap.querySelectorAll('img');
+        if(imgs.length === 0) return;
+        current = (i + imgs.length) % imgs.length;
+        imgs.forEach((im,idx) => im.classList.toggle('active', idx === current));
+        dots.forEach((d,idx) => d.classList.toggle('active', idx === current));
+        thumbs.forEach((t,idx) => t.classList.toggle('active', idx === current));
+      }
+      window.nextImg = () => show(current + 1);
+      window.prevImg = () => show(current - 1);
+
+      // WhatsApp button
+      const num = (data.whatsappNumber || '').replace(/[^0-9]/g, '');
+      const msg = encodeURIComponent('Hi, I\'m interested in ' + (mat.name || 'this material') + '. Could you share more details and pricing?');
+      document.getElementById('waBtn').href = 'https://wa.me/' + num + '?text=' + msg;
+    })
+    .catch(() => {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('notfoundBlock').style.display = 'block';
+    });
+})();
+</script>
+</body>
+</html>
