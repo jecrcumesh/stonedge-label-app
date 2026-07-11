@@ -30,6 +30,16 @@
         "images/cream-karaman/c2.jpeg",
         "images/cream-karaman/c1.jpeg"
       ]
+    },
+    "pluto-white": {
+      "name": "Pluto White",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/pluto-white/p-1.jpeg",
+        "images/pluto-white/p4.jpeg",
+        "images/pluto-white/p3.jpeg"
+      ]
     }
   }
 }
