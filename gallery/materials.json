@@ -11,6 +11,15 @@
         "images/burberry-beige/wall-application.jpg",
         "images/burberry-beige/floor-application.jpg"
       ]
+    },
+    "red-lavente": {
+      "name": "Red Lavente",
+      "category": "Marble",
+      "description": "Red Lavante (also known as Rosso Levanto) is a vibrant, deep-red natural marble featuring striking white or gray veins. It is highly prized for luxury projects like countertops, flooring, and decorative statement walls.",
+      "images": [
+        "images/red-lavente/red-lavante-2.jpeg",
+        "images/red-lavente/red-lavante-1.jpeg"
+      ]
     }
   }
 }
