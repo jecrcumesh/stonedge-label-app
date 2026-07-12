@@ -141,10 +141,13 @@
   .sblock .flabel{font-family:'Poppins',sans-serif;font-weight:700;font-size:2.7mm;text-transform:uppercase;letter-spacing:.05em;color:var(--ink);align-self:flex-start;}
   .barcode-block{flex:0 0 auto;}
   .barcode-block svg{width:100%;max-height:15mm;margin-top:0.8mm;}
-  .qr-block{flex:0 0 auto;}
-  .qr-block canvas{width:26mm;height:26mm;margin-top:1mm;image-rendering:pixelated;}
-  .contact-block{flex:1;justify-content:center;}
-  .contact-block .fval{font-size:4.0mm;font-weight:700;margin-top:0.8mm;}
+  .qr-block{flex:0 0 auto;flex-direction:row;align-items:center;justify-content:flex-start;gap:2.2mm;text-align:left;}
+  .qr-block canvas{width:17mm;height:17mm;flex:0 0 auto;image-rendering:pixelated;}
+  .qr-block .qrcaption{font-family:'Poppins',sans-serif;font-weight:600;font-size:2.05mm;line-height:1.32;text-transform:uppercase;letter-spacing:.02em;color:var(--ink);max-width:32mm;}
+  .contact-block{flex:1;justify-content:center;gap:1.8mm;align-items:flex-start;text-align:left;}
+  .contact-block .cline{display:flex;align-items:baseline;gap:1.8mm;width:100%;}
+  .contact-block .clabel{font-family:'Poppins',sans-serif;font-weight:700;font-size:2.1mm;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);flex:0 0 auto;min-width:12mm;text-align:left;}
+  .contact-block .cval{font-size:3.0mm;font-weight:600;word-break:break-all;text-align:left;}
 
   .print-note{font-size:12px;color:var(--muted);max-width:400px;text-align:center;line-height:1.6;}
   .print-note b{color:var(--ink);}
@@ -241,8 +244,20 @@
       <div class="urlPreview" id="urlPreview" style="font-size:11px;color:var(--muted);margin-top:5px;word-break:break-all;"></div>
     </div>
     <div class="field">
+      <label>QR Caption <span style="font-weight:400;text-transform:none;">(text next to the scan code)</span></label>
+      <input type="text" id="qrCaption" value="Watch It Come Alive">
+    </div>
+    <div class="field">
       <label>Contact No.</label>
       <input type="tel" id="contactNo" value="+91 9876543210">
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input type="text" id="companyEmail" value="info@thestonedge.com">
+    </div>
+    <div class="field">
+      <label>Website Link (footer text)</label>
+      <input type="text" id="companyWebsite" value="www.thestonedge.com">
     </div>
 
     <div class="actions">
@@ -308,12 +323,13 @@
               <svg id="outBarcode"></svg>
             </div>
             <div class="sblock qr-block">
-              <div class="flabel">Scan to Visit Website</div>
               <canvas id="outQr" width="200" height="200"></canvas>
+              <div class="qrcaption" id="outQrCaption">Watch It Come Alive</div>
             </div>
             <div class="sblock contact-block">
-              <div class="flabel">Contact No.</div>
-              <div class="fval" id="outContact">—</div>
+              <div class="cline"><span class="clabel">Contact</span><span class="cval" id="outContact">—</span></div>
+              <div class="cline"><span class="clabel">Email</span><span class="cval" id="outEmail">—</span></div>
+              <div class="cline"><span class="clabel">Web</span><span class="cval" id="outWebsite">—</span></div>
             </div>
           </div>
         </div>
@@ -2631,10 +2647,10 @@ var qrcode = function() {
 <script>
 (function(){
   const $ = id => document.getElementById(id);
-  const fields = ['companyName','tagline','materialName','size','qtyPcs','qtySqft','lotNo','description','remark','barcodeValue','galleryBaseUrl','materialSlug','contactNo'];
+  const fields = ['companyName','tagline','materialName','size','qtyPcs','qtySqft','lotNo','description','remark','barcodeValue','galleryBaseUrl','materialSlug','qrCaption','contactNo','companyEmail','companyWebsite'];
   const STORAGE_KEY = 'stonedge_label_studio_v1';
   const LOGO_KEY = 'stonedge_label_studio_logo';
-  const PERSISTENT = new Set(['companyName','tagline','galleryBaseUrl','contactNo']);
+  const PERSISTENT = new Set(['companyName','tagline','galleryBaseUrl','qrCaption','contactNo','companyEmail','companyWebsite']);
 
   function setText(el, value, fallback){
     if(value && value.trim() !== ''){
@@ -2681,6 +2697,26 @@ var qrcode = function() {
     }catch(e){}
   }
 
+  function escapeHtml(str){
+    return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function splitCaptionTwoLines(text){
+    const words = (text || '').trim().split(/\s+/).filter(Boolean);
+    if(words.length <= 1) return escapeHtml(text || '');
+    let bestIndex = 1;
+    let bestDiff = Infinity;
+    for(let i = 1; i < words.length; i++){
+      const line1 = words.slice(0, i).join(' ');
+      const line2 = words.slice(i).join(' ');
+      const diff = Math.abs(line1.length - line2.length);
+      if(diff < bestDiff){ bestDiff = diff; bestIndex = i; }
+    }
+    const line1 = words.slice(0, bestIndex).join(' ');
+    const line2 = words.slice(bestIndex).join(' ');
+    return escapeHtml(line1) + '<br>' + escapeHtml(line2);
+  }
+
   function slugify(text){
     return (text || '').toLowerCase().trim()
       .replace(/[^a-z0-9]+/g, '-')
@@ -2708,6 +2744,9 @@ var qrcode = function() {
     setText($('outDesc'), v('description'));
     setText($('outRemark'), v('remark'));
     setText($('outContact'), v('contactNo'));
+    setText($('outEmail'), v('companyEmail'));
+    setText($('outWebsite'), v('companyWebsite'));
+    $('outQrCaption').innerHTML = splitCaptionTwoLines(v('qrCaption') || 'Watch It Come Alive');
     renderBarcode(v('barcodeValue'));
     const fullUrl = buildGalleryUrl(v('galleryBaseUrl'), v('materialSlug'));
     $('urlPreview').textContent = fullUrl ? ('QR links to: ' + fullUrl) : '';
