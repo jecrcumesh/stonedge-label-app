@@ -20,7 +20,8 @@ Just double-click `index.html` — it opens in your browser and works immediatel
 No server, database, or ongoing cost — it's a static file GitHub hosts for free.
 
 ## 3. How the app works
-- **Company Name, Tagline, Logo, Gallery Page URL, Contact No.** are treated as "standing" details — they're saved in the browser's local storage, so they stay filled in next time you open the app on that device.
+- **Company Name, Tagline, Logo, Gallery Page URL, QR Caption, Contact No., Email, Website** are treated as "standing" details — they're saved in the browser's local storage, so they stay filled in next time you open the app on that device.
+- **QR Caption** is the short line printed next to the scan code (default: "Watch It Come Alive") — edit it any time like any other field; longer text wraps automatically without overflowing the label.
 - **Material Name, Size, Qty, Lot No, Description, Remark, Barcode Value, Material Slug** are per-product — click **Clear Product Fields** after printing one label to move to the next, without having to retype the company info.
 - Typing a **Material Name** auto-fills a matching **Material Slug** (e.g. "Alaska Grey Granite" → `alaska-grey-granite`) — edit it if you want a shorter/different slug.
 - The QR code links to **Gallery Page URL + ?slug=<Material Slug>** — see the companion `stonedge-gallery` project for the page it points to (product photos + WhatsApp enquiry button). Set the Gallery Page URL once after deploying that site; only the slug changes per label.
