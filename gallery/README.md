@@ -11,6 +11,25 @@ The page your label QR codes link to — shows product photos (slab + wall/floor
 
 A sample entry (`burberry-beige`) with placeholder images is included so you can see the structure — swap the placeholder JPGs for real photos before going live.
 
+### Page features
+- Swipeable photo gallery with a fade transition, thumbnail strip, and an image counter
+- Tap any photo to open it full-screen; double-tap to zoom in for detail (grain, veining, finish)
+- A "Get in touch" card showing phone (tap to call), email (tap to open mail app), and website — pulled from the company-level fields below
+- Skeleton loading animation instead of a plain "Loading…" text
+- A friendly "not found" message if a QR points to a slug that's since been removed
+
+### Company-level fields (top of `materials.json`, set once)
+```json
+"companyName": "Stonedge Private Limited",
+"logo": "data:image/png;base64,...",
+"whatsappNumber": "919714944008",
+"phone": "919714944008",
+"phoneDisplay": "+91 9714944008",
+"email": "info@thestonedge.com",
+"website": "http://www.thestonedge.com/"
+```
+`logo` is a data URI (base64) so the page stays a single fetch with no extra image request — regenerate it from any PNG with `base64 -i logo.png` and paste the output after `data:image/png;base64,`. `phoneDisplay` is optional — if omitted, the raw `phone` digits are shown instead.
+
 ## 2. Where images are stored (free)
 Store them right in this same GitHub repo, inside `images/<material-slug>/`. GitHub Pages serves them for free along with the HTML — no separate image host, no bandwidth bill, no expiry. This works well up to a few thousand photos; if your catalog gets huge later, a dedicated image host is a future upgrade, not something you need on day one.
 
