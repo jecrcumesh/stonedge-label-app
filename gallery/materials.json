@@ -59,6 +59,18 @@
         "images/green-lavante/img-1089.jpeg",
         "images/green-lavante/img-2145.jpeg"
       ]
+    },
+    "camouflage": {
+      "name": "Camouflage",
+      "category": "Marble",
+      "description": "Camouflage marble is an exclusive natural stone distinguished by intricate, wavy veining that mimics the abstract, organic patterns of a camouflage uniform. Quarried primarily in Albania and Italy, this stone blends earthy browns, greys, whites, and taupes to add dynamic, luxurious character to contemporary interiors.",
+      "images": [
+        "images/camouflage/2350eed7-ba7c-457e-8cab-3a839df5ef90.jpeg",
+        "images/camouflage/img-0441.jpg",
+        "images/camouflage/img-3391.jpeg",
+        "images/camouflage/img-3398.jpeg",
+        "images/camouflage/img-0453.jpeg"
+      ]
     }
   }
 }
