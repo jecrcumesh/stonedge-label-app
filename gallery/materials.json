@@ -131,6 +131,19 @@
         "images/armani-brown/img-7231.jpeg",
         "images/armani-brown/img-7234.jpeg"
       ]
+    },
+    "beige-travertine": {
+      "name": "Beige Travertine",
+      "category": "Marble",
+      "description": "+14                    Beige travertine marble is a natural sedimentary stone quarried from mineral-rich geothermal springs, celebrated for its warm, creamy neutral tones. It is highly prized for its unique, subtly pitted surface and natural linear bands. This durable, rustic-chic stone is incredibly versatile, making it perfect for indoor flooring, bathroom vanities, and outdoor patio surrounds.",
+      "images": [
+        "images/beige-travertine/5620d3e4-ff83-410b-84fa-0637273d59ae.jpeg",
+        "images/beige-travertine/img-1251.jpeg",
+        "images/beige-travertine/img-1270.jpeg",
+        "images/beige-travertine/img-1271.jpeg",
+        "images/beige-travertine/img-1272.jpeg",
+        "images/beige-travertine/img-1273.jpeg"
+      ]
     }
   }
 }
