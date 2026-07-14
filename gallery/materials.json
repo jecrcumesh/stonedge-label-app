@@ -71,6 +71,16 @@
         "images/camouflage/img-3398.jpeg",
         "images/camouflage/img-0453.jpeg"
       ]
+    },
+    "red-travartine": {
+      "name": "Red travartine",
+      "category": "Marble",
+      "description": "14                    Red travertine is a striking, warm-toned natural stone formed by hot springs. It is characterized by deep red, terracotta, and earthy sienna hues, layered with natural surface pores and parallel veins. Often sourced from Iran, it is a luxurious, highly durable choice for statement floors, wall cladding, and bathroom vanities",
+      "images": [
+        "images/red-travartine/img-6139.jpeg",
+        "images/red-travartine/img-6140.jpeg",
+        "images/red-travartine/img-9743.jpeg"
+      ]
     }
   }
 }
