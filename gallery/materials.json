@@ -118,6 +118,19 @@
         "images/doretto-travertine/img-1323.jpeg",
         "images/doretto-travertine/img-1325.jpeg"
       ]
+    },
+    "armani-brown": {
+      "name": "Armani Brown",
+      "category": "Marble",
+      "description": "Armani Brown Marble (also known as Bronze Armani) is a premium natural stone featuring a rich, dark-chocolate base and delicate, light veins. Quarried mainly in Turkey, Italy, and Spain, it is widely used in high-end projects for its warmth and luxurious aesthetic",
+      "images": [
+        "images/armani-brown/img-7201.jpeg",
+        "images/armani-brown/img-7215.jpeg",
+        "images/armani-brown/img-7218.jpeg",
+        "images/armani-brown/img-7222.jpeg",
+        "images/armani-brown/img-7231.jpeg",
+        "images/armani-brown/img-7234.jpeg"
+      ]
     }
   }
 }
