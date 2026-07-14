@@ -104,6 +104,20 @@
         "images/rosso-statuario/img-1071.jpeg",
         "images/rosso-statuario/img-1072.jpeg"
       ]
+    },
+    "doretto-travertine": {
+      "name": "Doretto Travertine",
+      "category": "Marble",
+      "description": "Doretto Travertine is an elegant, premium sedimentary limestone characterized by its signature earthy tones, natural surface pits, and linear or cloud-like patterns.",
+      "images": [
+        "images/doretto-travertine/5c21d150-687c-4dc6-87ce-5e74e77b0943.jpeg",
+        "images/doretto-travertine/bf3cc3af-ad8e-4184-aa4c-24cc88927f40.jpeg",
+        "images/doretto-travertine/26f920ad-3f0f-4e47-a9e1-5d98e2e7dc2f.jpeg",
+        "images/doretto-travertine/46fdf3fa-0318-4a3b-b423-34dfa0676231.jpeg",
+        "images/doretto-travertine/img-1322.jpeg",
+        "images/doretto-travertine/img-1323.jpeg",
+        "images/doretto-travertine/img-1325.jpeg"
+      ]
     }
   }
 }
