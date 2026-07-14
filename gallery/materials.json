@@ -144,6 +144,22 @@
         "images/beige-travertine/img-1272.jpeg",
         "images/beige-travertine/img-1273.jpeg"
       ]
+    },
+    "taj-mahal": {
+      "name": "Taj Mahal",
+      "category": "Marble",
+      "description": "Taj Mahal quartzite is a premium, highly durable natural stone quarried in Brazil. Named after the iconic Indian monument, it features a creamy, off-white background with soft, subtle gold and taupe veins. It offers the elegant look of marble with the exceptional strength and heat resistance of granite",
+      "images": [
+        "images/taj-mahal/img-8252.jpeg",
+        "images/taj-mahal/34b96210-1ea5-4a0b-a27e-f4e7e7d47b21.jpeg",
+        "images/taj-mahal/img-1404.jpeg",
+        "images/taj-mahal/img-1405.jpeg",
+        "images/taj-mahal/img-1406.jpeg",
+        "images/taj-mahal/img-1408.jpeg",
+        "images/taj-mahal/img-1409.jpeg",
+        "images/taj-mahal/img-0454.jpeg",
+        "images/taj-mahal/img-0455.jpeg"
+      ]
     }
   }
 }
