@@ -358,14 +358,32 @@
 
       // upload images
       const imagePaths = [];
+      const usedNames = new Set();
       for(let i = 0; i < files.length; i++){
         const f = files[i].file;
         log('Processing ' + f.name + ' (' + (i+1) + '/' + files.length + ')…', 'info');
         const base64 = await resizeImage(f, 1600, 0.82);
         let safeName = f.name.toLowerCase().replace(/[^a-z0-9.]+/g, '-').replace(/-+/g, '-');
         if(!/\.jpe?g$/i.test(safeName)) safeName = safeName.replace(/\.[a-z0-9]+$/i, '') + '.jpg';
+
+        // avoid collisions within this same batch (e.g. two photos both named "image.jpg")
+        if(usedNames.has(safeName)){
+          const base = safeName.replace(/\.jpe?g$/i, '');
+          let n2 = 1;
+          let candidate = base + '-' + n2 + '.jpg';
+          while(usedNames.has(candidate)){ n2++; candidate = base + '-' + n2 + '.jpg'; }
+          safeName = candidate;
+        }
+        usedNames.add(safeName);
+
         const imgPath = settings.galleryPath + '/images/' + slug + '/' + safeName;
-        await ghPut(settings, imgPath, base64, 'Add photo for ' + name + ' (' + safeName + ')');
+
+        // check whether this exact file already exists (re-running an upload, or same-named
+        // file already present in the repo) — GitHub requires the current sha to overwrite it
+        let existingImg = null;
+        try{ existingImg = await ghGet(settings, imgPath); }catch(e){ /* treat as not found */ }
+
+        await ghPut(settings, imgPath, base64, 'Add photo for ' + name + ' (' + safeName + ')', existingImg ? existingImg.sha : undefined);
         imagePaths.push('images/' + slug + '/' + safeName);
         log('  ✓ uploaded ' + imgPath, 'ok');
       }
