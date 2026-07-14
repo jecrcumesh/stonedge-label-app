@@ -92,6 +92,18 @@
         "images/red-lavante/img-1076.jpeg",
         "images/red-lavante/img-1077.jpeg"
       ]
+    },
+    "rosso-statuario": {
+      "name": "Rosso statuario",
+      "category": "Marble",
+      "description": "Rosso Statuario marble is a premium, highly exclusive variation featuring a warm cream or light base overlaid with cascading rose gold and pinkish veins, providing a soft yet luxurious aesthetic suitable for high-end interior applications like statement wall panels, flooring, and bathroom vanities.",
+      "images": [
+        "images/rosso-statuario/img-1069.jpeg",
+        "images/rosso-statuario/img-1056.jpeg",
+        "images/rosso-statuario/img-1070.jpeg",
+        "images/rosso-statuario/img-1071.jpeg",
+        "images/rosso-statuario/img-1072.jpeg"
+      ]
     }
   }
 }
