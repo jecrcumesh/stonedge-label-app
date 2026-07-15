@@ -189,6 +189,16 @@
         "images/tempest-grey-organza-finish/img-1317.jpg",
         "images/tempest-grey-organza-finish/img-1182.jpeg"
       ]
+    },
+    "moon-grey": {
+      "name": "Moon Grey",
+      "category": "Marble",
+      "description": "Moon Grey marble is a premium natural stone featuring a soft, muted grey base, delicate white and silver veining, and cloudy, natural patterns. It is highly prized in modern architecture for its calm, sophisticated aesthetic and mirror-like polish, making it ideal for luxury flooring, wall cladding, and countertops.",
+      "images": [
+        "images/moon-grey/img-1298.jpeg",
+        "images/moon-grey/img-1300.jpeg",
+        "images/moon-grey/img-1301.jpeg"
+      ]
     }
   }
 }
