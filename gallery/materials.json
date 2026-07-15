@@ -149,15 +149,6 @@
         "images/taj-mahal/img-0455.jpeg"
       ]
     },
-    "camouflage-1": {
-      "name": "Camouflage",
-      "category": "Marble",
-      "description": "",
-      "images": [
-        "images/camouflage-1/img-2544.jpeg",
-        "images/camouflage-1/img-2545.jpeg"
-      ]
-    },
     "pluto-white-1": {
       "name": "Pluto White",
       "category": "Marble",
@@ -209,15 +200,6 @@
         "images/agora-beige/img-1245.jpeg",
         "images/agora-beige/img-1246.jpeg",
         "images/agora-beige/img-1247.jpeg"
-      ]
-    },
-    "camouflage-2": {
-      "name": "Camouflage",
-      "category": "Marble",
-      "description": "",
-      "images": [
-        "images/camouflage-2/img-2544.jpeg",
-        "images/camouflage-2/img-2545.jpeg"
       ]
     }
   }
