@@ -201,6 +201,20 @@
         "images/agora-beige/img-1246.jpeg",
         "images/agora-beige/img-1247.jpeg"
       ]
+    },
+    "camouflage": {
+      "name": "Camouflage",
+      "category": "Marble",
+      "description": "Camouflage marble is a premium, natural breccia stone quarried primarily in Albania and Italy, famous for its organic, blended patterns that mimic military camouflage. It is highly prized for luxury interiors due to its unique combination of earthy and neutral tones.",
+      "images": [
+        "images/camouflage/img-0441.jpg",
+        "images/camouflage/img-3391.jpeg",
+        "images/camouflage/img-3398.jpeg",
+        "images/camouflage/img-0453.jpeg",
+        "images/camouflage/img-2544.jpeg",
+        "images/camouflage/img-2545.jpeg",
+        "images/camouflage/img-0442.jpg"
+      ]
     }
   }
 }
