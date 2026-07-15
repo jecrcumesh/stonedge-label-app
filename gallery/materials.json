@@ -210,6 +210,18 @@
         "images/michael-angelo/img-2239.jpeg",
         "images/michael-angelo/73817899-4cd5-4912-ac88-c56f4148d42f.jpg"
       ]
+    },
+    "agora-beige": {
+      "name": "Agora beige",
+      "category": "Marble",
+      "description": "Agora Beige marble is a durable, premium natural stone quarried in Turkey, characterized by a smooth, creamy off-white background and delicate, subtle veining. Its high density, scratch resistance, and uniform, light palette make it a luxurious yet practical choice for heavy-traffic indoor and outdoor spaces.",
+      "images": [
+        "images/agora-beige/img-1236.jpeg",
+        "images/agora-beige/img-1237.jpeg",
+        "images/agora-beige/img-1245.jpeg",
+        "images/agora-beige/img-1246.jpeg",
+        "images/agora-beige/img-1247.jpeg"
+      ]
     }
   }
 }
