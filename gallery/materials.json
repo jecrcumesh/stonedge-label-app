@@ -199,6 +199,17 @@
         "images/moon-grey/img-1300.jpeg",
         "images/moon-grey/img-1301.jpeg"
       ]
+    },
+    "michael-angelo": {
+      "name": "Michael Angelo",
+      "category": "Marble",
+      "description": "Michelangelo marble is a premium, luminous white natural stone prized for its dramatic grey, beige, or golden veining. Often quarried in Italy and Portugal, this luxurious, dense material is widely used for upscale flooring, kitchen countertops, and feature walls in high-end interior design.",
+      "images": [
+        "images/michael-angelo/img-1278.jpeg",
+        "images/michael-angelo/img-1279.jpeg",
+        "images/michael-angelo/img-2239.jpeg",
+        "images/michael-angelo/73817899-4cd5-4912-ac88-c56f4148d42f.jpg"
+      ]
     }
   }
 }
