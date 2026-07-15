@@ -255,6 +255,16 @@
         "images/sky-storm-bq/img-1148.jpeg",
         "images/sky-storm-bq/img-0485.jpeg"
       ]
+    },
+    "rosso-allure-bq": {
+      "name": "Rosso Allure BQ",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/rosso-allure-bq/img-0487.jpg",
+        "images/rosso-allure-bq/img-0486.jpg",
+        "images/rosso-allure-bq/img-1149.jpeg"
+      ]
     }
   }
 }
