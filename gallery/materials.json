@@ -245,6 +245,16 @@
         "images/monalisa/img-1397.jpeg",
         "images/monalisa/img-1396.jpeg"
       ]
+    },
+    "sky-storm-bq": {
+      "name": "Sky Storm BQ",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/sky-storm-bq/img-1147.jpeg",
+        "images/sky-storm-bq/img-1148.jpeg",
+        "images/sky-storm-bq/img-0485.jpeg"
+      ]
     }
   }
 }
