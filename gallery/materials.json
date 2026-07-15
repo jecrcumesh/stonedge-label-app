@@ -179,6 +179,16 @@
         "images/pluto-white-1/img-1093.jpeg",
         "images/pluto-white-1/img-1092.jpeg"
       ]
+    },
+    "tempest-grey-organza-finish": {
+      "name": "Tempest grey organza finish",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/tempest-grey-organza-finish/img-1189.jpeg",
+        "images/tempest-grey-organza-finish/img-1317.jpg",
+        "images/tempest-grey-organza-finish/img-1182.jpeg"
+      ]
     }
   }
 }
