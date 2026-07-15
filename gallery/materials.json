@@ -265,6 +265,16 @@
         "images/rosso-allure-bq/img-0486.jpg",
         "images/rosso-allure-bq/img-1149.jpeg"
       ]
+    },
+    "leopard-green-bq": {
+      "name": "Leopard Green BQ",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/leopard-green-bq/img-1156.jpeg",
+        "images/leopard-green-bq/img-1158.jpeg",
+        "images/leopard-green-bq/img-0488.jpeg"
+      ]
     }
   }
 }
