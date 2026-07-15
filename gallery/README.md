@@ -37,7 +37,10 @@ Store them right in this same GitHub repo, inside `images/<material-slug>/`. Git
 
 ## 3. Adding a new material (recommended: use the Admin tool)
 Open `admin.html` — it's a form: enter the material name, category, description, drag in your photos, and click **Upload & Publish to GitHub**. It automatically:
-- slugifies the material name into a folder name (e.g. "Alaska Grey Granite" → `alaska-grey-granite`), and adds `-1`, `-2`, etc. if that slug is already taken
+- slugifies the material name into a folder name (e.g. "Alaska Grey Granite" → `alaska-grey-granite`)
+- **if that slug already exists** (you're revisiting the same material), it updates that material instead of creating a duplicate: new photos are **appended** to the existing ones (never overwritten or renamed with `-1`, `-2`), and the name/category/description are updated to whatever you typed. You can even submit with zero new photos if you're only fixing the description.
+- **if it's a new slug**, it creates a fresh material entry (at least one photo is required in this case)
+- as you type the material name, it checks GitHub live and tells you right there whether you're about to update an existing material (and how many photos it already has) or create a new one — so there's no guessing before you click publish
 - resizes and compresses each photo (max 1600px, so uploads stay fast even from a phone camera)
 - creates `images/<slug>/` and uploads the photos there
 - adds the matching entry to `materials.json`
