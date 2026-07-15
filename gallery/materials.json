@@ -220,6 +220,18 @@
         "images/camouflage/img-2545.jpeg",
         "images/camouflage/img-0442.jpg"
       ]
+    },
+    "chocolate-travertine": {
+      "name": "Chocolate travertine",
+      "category": "Marble",
+      "description": "Chocolate travertine marble is a luxurious, naturally porous limestone celebrated for its rich, earthy brown tones and signature veining. Quarried primarily in Iran and Italy, it is a highly durable and aesthetic choice for high-end wall cladding, flooring, and outdoor spaces.",
+      "images": [
+        "images/chocolate-travertine/img-1343.jpeg",
+        "images/chocolate-travertine/img-1348.jpeg",
+        "images/chocolate-travertine/img-1349.jpeg",
+        "images/chocolate-travertine/img-1350.jpeg",
+        "images/chocolate-travertine/img-1366.jpeg"
+      ]
     }
   }
 }
