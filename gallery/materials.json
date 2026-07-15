@@ -169,6 +169,16 @@
         "images/camouflage-1/img-2544.jpeg",
         "images/camouflage-1/img-2545.jpeg"
       ]
+    },
+    "pluto-white-1": {
+      "name": "Pluto White",
+      "category": "Marble",
+      "description": "Pluto White marble is a premium, highly durable natural stone known for its bright white background and subtle, elegant veining. Quarried primarily in India, this polished marble is a popular, cost-effective choice for modern interior flooring and wall cladding.",
+      "images": [
+        "images/pluto-white-1/img-1091.jpeg",
+        "images/pluto-white-1/img-1093.jpeg",
+        "images/pluto-white-1/img-1092.jpeg"
+      ]
     }
   }
 }
