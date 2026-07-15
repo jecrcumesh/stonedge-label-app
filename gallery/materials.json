@@ -160,6 +160,15 @@
         "images/taj-mahal/img-0454.jpeg",
         "images/taj-mahal/img-0455.jpeg"
       ]
+    },
+    "camouflage-1": {
+      "name": "Camouflage",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/camouflage-1/img-2544.jpeg",
+        "images/camouflage-1/img-2545.jpeg"
+      ]
     }
   }
 }
