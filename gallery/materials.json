@@ -222,6 +222,15 @@
         "images/agora-beige/img-1246.jpeg",
         "images/agora-beige/img-1247.jpeg"
       ]
+    },
+    "camouflage-2": {
+      "name": "Camouflage",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/camouflage-2/img-2544.jpeg",
+        "images/camouflage-2/img-2545.jpeg"
+      ]
     }
   }
 }
