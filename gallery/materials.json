@@ -232,6 +232,19 @@
         "images/chocolate-travertine/img-1350.jpeg",
         "images/chocolate-travertine/img-1366.jpeg"
       ]
+    },
+    "monalisa": {
+      "name": "Monalisa",
+      "category": "Marble",
+      "description": "Monalisa granite (often referred to as Monalisa white or cream granite) is an exotic natural stone quarried primarily in Rajasthan, India. It is celebrated for its soft, neutral off-white or beige background and intricate, flowing veins of gray, gold, and earthy browns.",
+      "images": [
+        "images/monalisa/img-0376.jpeg",
+        "images/monalisa/img-1393.jpeg",
+        "images/monalisa/img-1394.jpeg",
+        "images/monalisa/img-1395.jpeg",
+        "images/monalisa/img-1397.jpeg",
+        "images/monalisa/img-1396.jpeg"
+      ]
     }
   }
 }
