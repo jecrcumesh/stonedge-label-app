@@ -8,13 +8,18 @@
   "website": "http://www.thestonedge.com/",
   "materials": {
     "burberry-beige": {
-      "name": "Burberry Beige",
+      "name": "Burberry beige",
       "category": "Marble",
-      "description": "Imported marble with a warm beige tone and soft natural veining. Popular for flooring, wall cladding, and countertops.",
+      "description": "Burberry Beige Marble is an elegant, premium natural stone celebrated for its soft creamy base and delicate flowing veins in taupe, ivory, and light grey. Sourced primarily from quarries in Turkey or Italy, it is highly sought after by interior designers for creating warm, sophisticated, and ageless luxury in both residential and commercial spaces.",
       "images": [
         "images/burberry-beige/slab-1.jpg",
         "images/burberry-beige/wall-application.jpg",
-        "images/burberry-beige/floor-application.jpg"
+        "images/burberry-beige/floor-application.jpg",
+        "images/burberry-beige/img-1334.jpeg",
+        "images/burberry-beige/img-1335.jpeg",
+        "images/burberry-beige/img-1336.jpeg",
+        "images/burberry-beige/img-1337.jpeg",
+        "images/burberry-beige/img-1338.jpeg"
       ]
     },
     "cream-karaman": {
