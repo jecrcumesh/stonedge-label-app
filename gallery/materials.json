@@ -325,6 +325,14 @@
         "images/grey-travertine/img-2549.jpeg",
         "images/grey-travertine/img-2550.jpeg"
       ]
+    },
+    "mirage-black": {
+      "name": "Mirage black",
+      "category": "Marble",
+      "description": "Black Mirage marble is a luxurious stone. It has a deep, dark, almost obsidian-black base. It is famous for its straight, parallel lines. These sharp lines shine in bright colors like gold, copper, and white. They often cross at sharp angles. This creates a stunning contrast.",
+      "images": [
+        "images/mirage-black/img-2553.jpeg"
+      ]
     }
   }
 }
