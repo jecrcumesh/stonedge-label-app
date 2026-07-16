@@ -288,6 +288,16 @@
         "images/blue-azola/img-2546.jpeg",
         "images/blue-azola/img-2547.jpeg"
       ]
+    },
+    "blue-roma": {
+      "name": "Blue Roma",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/blue-roma/img-3419.jpeg",
+        "images/blue-roma/img-2539.jpeg",
+        "images/blue-roma/img-2548.jpeg"
+      ]
     }
   }
 }
