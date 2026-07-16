@@ -278,6 +278,16 @@
         "images/leopard-green-bq/img-1158-1.jpg",
         "images/leopard-green-bq/img-0488-1.jpg"
       ]
+    },
+    "blue-azola": {
+      "name": "Blue Azola",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/blue-azola/img-0419.jpeg",
+        "images/blue-azola/img-2546.jpeg",
+        "images/blue-azola/img-2547.jpeg"
+      ]
     }
   }
 }
