@@ -300,6 +300,15 @@
         "images/blue-roma/img-2539-1.jpg",
         "images/blue-roma/img-2548-1.jpg"
       ]
+    },
+    "grey-travertine": {
+      "name": "Grey Travertine",
+      "category": "Marble",
+      "description": "Grey travertine marble is a stunning natural stone formed by flowing mineral spring water. It features cool, silver-grey tones and beautiful sweeping lines.",
+      "images": [
+        "images/grey-travertine/img-2549.jpeg",
+        "images/grey-travertine/img-2550.jpeg"
+      ]
     }
   }
 }
