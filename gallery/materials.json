@@ -380,6 +380,15 @@
         "images/yellosiena/img-0786.jpeg",
         "images/yellosiena/img-0787.jpeg"
       ]
+    },
+    "palladiana-terra": {
+      "name": "Palladiana terra",
+      "category": "Quartzite",
+      "description": "",
+      "images": [
+        "images/palladiana-terra/img-1188.jpeg",
+        "images/palladiana-terra/img-0571.jpeg"
+      ]
     }
   }
 }
