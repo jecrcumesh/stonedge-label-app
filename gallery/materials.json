@@ -371,6 +371,15 @@
         "images/cristallo-gold/img-0568.jpeg",
         "images/cristallo-gold/img-0569.jpeg"
       ]
+    },
+    "yellosiena": {
+      "name": "Yellosiena",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/yellosiena/img-0786.jpeg",
+        "images/yellosiena/img-0787.jpeg"
+      ]
     }
   }
 }
