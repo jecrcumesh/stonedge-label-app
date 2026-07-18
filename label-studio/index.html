@@ -160,7 +160,29 @@
     .preview-scale-wrap{width:152mm;height:101mm;overflow:visible;margin:0;}
     .label{transform:none;width:152mm;height:101mm;border-width:0.5mm;margin:0;}
     @page{size:152mm 101mm;margin:0;}
+
+    body.printing-batch,
+    body.printing-batch html{height:auto !important;}
+    body.printing-batch .app{display:none !important;}
+    body.printing-batch #batchPrintArea{display:block !important;}
+    .batch-page{page-break-after:always;height:101mm;overflow:hidden;}
+    .batch-page:last-child{page-break-after:auto;}
   }
+
+  #batchPrintArea{display:none;}
+
+  .batch-row{
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+    background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 10px;
+  }
+  .batch-row-text{display:flex;flex-direction:column;font-size:12.5px;line-height:1.4;}
+  .batch-row-text b{font-size:13px;}
+  .batch-row-text span{color:var(--muted);font-size:11.5px;}
+  .batch-remove{
+    appearance:none;border:none;background:#fff;border:1px solid var(--line);color:var(--muted);
+    width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:13px;flex-shrink:0;
+  }
+  .batch-remove:hover{color:var(--danger);border-color:var(--danger);}
 
   .printer-guide{margin-top:20px;}
   .printer-guide summary{cursor:pointer;font-weight:600;font-size:13px;color:var(--ink);padding:4px 0;}
@@ -267,6 +289,16 @@
     <button class="btn btn-primary" id="printBtn">🖨️ Print Label</button>
     <p class="hint">Company name, logo, website and contact are saved automatically for next time. Product fields (material, size, lot, etc.) reset with "Clear Product Fields" so you can move to the next label quickly.</p>
 
+    <h2 class="second">Batch Printing</h2>
+    <p class="hint" style="margin-top:0;">Fill in one material's details above, add it to the batch, then move to the next material. When you're ready, print them all in a single job — one label per sheet.</p>
+    <button class="btn btn-ghost" id="addToBatchBtn" style="width:100%;">➕ Add This Material to Batch</button>
+    <div id="batchEmpty" class="hint" style="margin-top:10px;">No materials queued yet.</div>
+    <div id="batchList" style="margin-top:10px;display:flex;flex-direction:column;gap:6px;"></div>
+    <div class="actions" style="margin-top:10px;">
+      <button class="btn btn-ghost" id="clearBatchBtn">Clear Batch</button>
+      <button class="btn btn-primary" id="printBatchBtn" style="background:var(--ink);" disabled>🖨️ Print All (<span id="batchCount">0</span>)</button>
+    </div>
+
     <details class="printer-guide">
       <summary>Printing on a TSC label printer</summary>
       <ol>
@@ -274,6 +306,7 @@
         <li>In the printer's driver properties, create/select a label stock sized 152 × 101 mm (matches this design).</li>
         <li>Click <b>Print Label</b> above, choose the TSC printer in the print dialog, set margins to "None" / paper size to the 152×101 label stock, and print.</li>
         <li>For silent/automatic printing without the dialog box (e.g. from a barcode scanner trigger), TSC printers can also be driven with raw TSPL commands via a small local print-agent — ask if you'd like this added as a next step.</li>
+        <li>For a batch, use <b>Print All</b> below — it sends every queued label as one print job. In the print dialog, make sure "Pages per sheet" is set to 1 so each label prints on its own sheet.</li>
       </ol>
     </details>
   </div>
@@ -339,6 +372,8 @@
   </div>
 
 </div>
+
+<div id="batchPrintArea"></div>
 
 <script>
 /*! JsBarcode v3.12.3 | (c) Johan Lindell | MIT license */
@@ -2662,8 +2697,7 @@ var qrcode = function() {
     }
   }
 
-  function renderBarcode(value){
-    const svg = $('outBarcode');
+  function renderBarcode(svg, value){
     if(!value){ svg.innerHTML = ''; return; }
     try{
       JsBarcode(svg, value, {
@@ -2672,8 +2706,7 @@ var qrcode = function() {
     }catch(e){ svg.innerHTML=''; }
   }
 
-  function renderQr(url){
-    const canvas = $('outQr');
+  function renderQr(canvas, url){
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0,0,canvas.width,canvas.height);
     if(!url) return;
@@ -2747,10 +2780,10 @@ var qrcode = function() {
     setText($('outEmail'), v('companyEmail'));
     setText($('outWebsite'), v('companyWebsite'));
     $('outQrCaption').innerHTML = splitCaptionTwoLines(v('qrCaption') || 'Watch It Come Alive');
-    renderBarcode(v('barcodeValue'));
+    renderBarcode($('outBarcode'), v('barcodeValue'));
     const fullUrl = buildGalleryUrl(v('galleryBaseUrl'), v('materialSlug'));
     $('urlPreview').textContent = fullUrl ? ('QR links to: ' + fullUrl) : '';
-    renderQr(fullUrl);
+    renderQr($('outQr'), fullUrl);
     save();
   }
 
@@ -2809,12 +2842,155 @@ var qrcode = function() {
     render();
   });
 
-  $('clearBtn').addEventListener('click', function(){
-    ['materialName','size','qtyPcs','qtySqft','lotNo','description','remark','barcodeValue','materialSlug'].forEach(id => $(id).value = '');
+  const PRODUCT_FIELD_IDS = ['materialName','size','qtyPcs','qtySqft','lotNo','description','remark','barcodeValue','materialSlug'];
+
+  function clearProductFields(){
+    PRODUCT_FIELD_IDS.forEach(id => $(id).value = '');
     render();
-  });
+  }
+
+  $('clearBtn').addEventListener('click', clearProductFields);
 
   $('printBtn').addEventListener('click', function(){ window.print(); });
+
+  // ---------------- Batch printing ----------------
+  const BATCH_KEY = 'stonedge_label_studio_batch_v1';
+  let batchQueue = [];
+
+  function loadBatch(){
+    try{
+      const raw = localStorage.getItem(BATCH_KEY);
+      if(raw) batchQueue = JSON.parse(raw);
+    }catch(e){ batchQueue = []; }
+  }
+  function saveBatch(){
+    try{ localStorage.setItem(BATCH_KEY, JSON.stringify(batchQueue)); }catch(e){}
+  }
+
+  function getProductSnapshot(){
+    const v = id => $(id).value;
+    const snap = {};
+    PRODUCT_FIELD_IDS.forEach(id => snap[id] = v(id));
+    return snap;
+  }
+
+  function renderBatchList(){
+    const wrap = $('batchList');
+    wrap.innerHTML = '';
+    $('batchEmpty').style.display = batchQueue.length === 0 ? 'block' : 'none';
+    batchQueue.forEach((item, i) => {
+      const row = document.createElement('div');
+      row.className = 'batch-row';
+      const title = item.materialName ? escapeHtml(item.materialName) : '<span style="color:var(--muted);">Untitled material</span>';
+      const meta = [item.size, item.lotNo ? ('Lot ' + item.lotNo) : ''].filter(Boolean).map(escapeHtml).join(' · ');
+      row.innerHTML = '<div class="batch-row-text"><b>' + title + '</b><span>' + meta + '</span></div>' +
+                       '<button class="batch-remove" data-i="' + i + '" type="button" aria-label="Remove">×</button>';
+      wrap.appendChild(row);
+    });
+    wrap.querySelectorAll('.batch-remove').forEach(btn => {
+      btn.addEventListener('click', function(){
+        batchQueue.splice(parseInt(this.dataset.i, 10), 1);
+        saveBatch();
+        renderBatchList();
+      });
+    });
+    $('batchCount').textContent = batchQueue.length;
+    $('printBatchBtn').disabled = batchQueue.length === 0;
+  }
+
+  $('addToBatchBtn').addEventListener('click', function(){
+    const snap = getProductSnapshot();
+    if(!snap.materialName.trim()){
+      $('materialName').focus();
+      return;
+    }
+    batchQueue.push(snap);
+    saveBatch();
+    renderBatchList();
+    clearProductFields();
+  });
+
+  $('clearBatchBtn').addEventListener('click', function(){
+    if(batchQueue.length && !confirm('Clear all ' + batchQueue.length + ' queued label(s)?')) return;
+    batchQueue = [];
+    saveBatch();
+    renderBatchList();
+  });
+
+  function buildBatchLabelNode(snap, standing, idx){
+    const wrapper = document.createElement('div');
+    wrapper.className = 'batch-page';
+
+    const label = document.createElement('div');
+    label.className = 'label';
+    label.innerHTML = `
+      <div class="label-header">
+        <div class="logo-badge"><img src="${standing.logoSrc}"></div>
+        <div class="header-text">
+          <div class="company">${escapeHtml(standing.companyName) || 'COMPANY NAME'}</div>
+          <div class="tagline">${escapeHtml(standing.tagline)}</div>
+        </div>
+      </div>
+      <div class="label-body">
+        <div class="field-col">
+          <div class="frow"><div class="flabel">Material Name</div><div class="fval${snap.materialName?'':' empty'}">${escapeHtml(snap.materialName)||'—'}</div></div>
+          <div class="frow"><div class="flabel">Size</div><div class="fval${snap.size?'':' empty'}">${escapeHtml(snap.size)||'—'}</div></div>
+          <div class="frow"><div class="flabel">Qty</div><div class="fval qtyline"><span>Pcs: <b>${escapeHtml(snap.qtyPcs)||'—'}</b></span><span>Sqft: <b>${escapeHtml(snap.qtySqft)||'—'}</b></span></div></div>
+          <div class="frow"><div class="flabel">Lot No.</div><div class="fval${snap.lotNo?'':' empty'}">${escapeHtml(snap.lotNo)||'—'}</div></div>
+          <div class="frow grow"><div class="flabel">Description</div><div class="fval${snap.description?'':' empty'}">${escapeHtml(snap.description)||'—'}</div></div>
+          <div class="frow grow"><div class="flabel">Remark</div><div class="fval${snap.remark?'':' empty'}">${escapeHtml(snap.remark)||'—'}</div></div>
+        </div>
+        <div class="side-col">
+          <div class="sblock barcode-block"><div class="flabel">Barcode</div><svg class="batch-barcode-${idx}"></svg></div>
+          <div class="sblock qr-block"><canvas class="batch-qr-${idx}" width="200" height="200"></canvas><div class="qrcaption">${splitCaptionTwoLines(standing.qrCaption || 'Watch It Come Alive')}</div></div>
+          <div class="sblock contact-block">
+            <div class="cline"><span class="clabel">Contact</span><span class="cval">${escapeHtml(standing.contactNo)||'—'}</span></div>
+            <div class="cline"><span class="clabel">Email</span><span class="cval">${escapeHtml(standing.companyEmail)||'—'}</span></div>
+            <div class="cline"><span class="clabel">Web</span><span class="cval">${escapeHtml(standing.companyWebsite)||'—'}</span></div>
+          </div>
+        </div>
+      </div>
+    `;
+    wrapper.appendChild(label);
+    return wrapper;
+  }
+
+  function getStandingSnapshot(){
+    const v = id => $(id).value;
+    return {
+      companyName: v('companyName'), tagline: v('tagline'), logoSrc: $('labelLogoImg').src,
+      contactNo: v('contactNo'), companyEmail: v('companyEmail'), companyWebsite: v('companyWebsite'),
+      qrCaption: v('qrCaption'), galleryBaseUrl: v('galleryBaseUrl')
+    };
+  }
+
+  $('printBatchBtn').addEventListener('click', function(){
+    if(batchQueue.length === 0) return;
+    const standing = getStandingSnapshot();
+    const area = $('batchPrintArea');
+    area.innerHTML = '';
+    batchQueue.forEach((snap, idx) => {
+      area.appendChild(buildBatchLabelNode(snap, standing, idx));
+    });
+    // render barcode/QR into each freshly-created node (must happen after insertion into DOM)
+    batchQueue.forEach((snap, idx) => {
+      const svg = area.querySelector('.batch-barcode-' + idx);
+      const canvas = area.querySelector('.batch-qr-' + idx);
+      if(svg) renderBarcode(svg, snap.barcodeValue);
+      if(canvas) renderQr(canvas, buildGalleryUrl(standing.galleryBaseUrl, snap.materialSlug));
+    });
+
+    document.body.classList.add('printing-batch');
+    window.print();
+  });
+
+  window.addEventListener('afterprint', function(){
+    document.body.classList.remove('printing-batch');
+    $('batchPrintArea').innerHTML = '';
+  });
+
+  loadBatch();
+  renderBatchList();
 
   load();
   render();
