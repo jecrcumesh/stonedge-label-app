@@ -409,6 +409,14 @@
         "images/rusty-crystllo/img-1193.jpeg",
         "images/rusty-crystllo/img-0573.jpeg"
       ]
+    },
+    "belvedere-quartzite": {
+      "name": "Belvedere quartzite",
+      "category": "Quartzite",
+      "description": "",
+      "images": [
+        "images/belvedere-quartzite/00224c69-ab1e-4d39-a33f-a23a5b23f7b1.jpeg"
+      ]
     }
   }
 }
