@@ -389,6 +389,16 @@
         "images/palladiana-terra/img-1188.jpeg",
         "images/palladiana-terra/img-0571.jpeg"
       ]
+    },
+    "oceanica-quartzite": {
+      "name": "Oceanica quartzite",
+      "category": "Quartzite",
+      "description": "",
+      "images": [
+        "images/oceanica-quartzite/img-1184.jpeg",
+        "images/oceanica-quartzite/img-1192.jpeg",
+        "images/oceanica-quartzite/img-0572.jpeg"
+      ]
     }
   }
 }
