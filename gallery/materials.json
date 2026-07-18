@@ -361,6 +361,16 @@
         "images/infinity-grey-bq/img-1146.jpeg",
         "images/infinity-grey-bq/img-1155.jpeg"
       ]
+    },
+    "cristallo-gold": {
+      "name": "Cristallo gold",
+      "category": "Quartzite",
+      "description": "",
+      "images": [
+        "images/cristallo-gold/img-1151.jpeg",
+        "images/cristallo-gold/img-0568.jpeg",
+        "images/cristallo-gold/img-0569.jpeg"
+      ]
     }
   }
 }
