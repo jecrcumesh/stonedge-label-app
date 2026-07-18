@@ -28,6 +28,17 @@ No server, database, or ongoing cost — it's a static file GitHub hosts for fre
 - The **barcode** (Code 128) regenerates live from the Barcode Value field as you type.
 - **Print Label** opens your browser's print dialog sized exactly to 152 × 101 mm via CSS `@page` — what you see in the preview is what prints, to scale.
 
+## 4. Printing multiple different materials together (batch printing)
+If you need to print labels for several different materials in one go:
+1. Fill in one material's details (Material Name, Size, Lot No, etc.) as usual.
+2. Click **➕ Add This Material to Batch** — it's added to the queue below, and the product fields clear automatically so you can move straight to the next material.
+3. Repeat for every material you want in this run. Each queued item shows in a list with a **×** to remove it if you change your mind.
+4. Once everything's queued, click **🖨️ Print All (N)** — this sends every queued label as a single print job, one label per sheet, in the order you added them.
+5. In the print dialog, make sure "Pages per sheet" is set to **1**, same as single-label printing.
+
+The batch queue is saved automatically, so it survives a page reload if you need to step away mid-batch. Company-wide details (logo, contact info, QR caption, etc.) are shared across every label in the batch — only the per-material fields differ.
+
+
 ## 4. Printing on a TSC label printer
 Browsers can't send raw printer commands (TSPL/ZPL) directly to a printer for security reasons — printing always goes through your operating system's print dialog and driver. Two ways to work with that on a TSC printer:
 
