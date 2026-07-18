@@ -342,6 +342,15 @@
         "images/white-travertine/img-2554.jpeg",
         "images/white-travertine/img-2555.jpeg"
       ]
+    },
+    "fusion-thunder-bq": {
+      "name": "Fusion Thunder BQ",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/fusion-thunder-bq/img-1159.jpeg",
+        "images/fusion-thunder-bq/img-0567.jpeg"
+      ]
     }
   }
 }
