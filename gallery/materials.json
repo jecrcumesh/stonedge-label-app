@@ -351,6 +351,16 @@
         "images/fusion-thunder-bq/img-1159.jpeg",
         "images/fusion-thunder-bq/img-0567.jpeg"
       ]
+    },
+    "infinity-grey-bq": {
+      "name": "Infinity grey BQ",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/infinity-grey-bq/img-1145.jpeg",
+        "images/infinity-grey-bq/img-1146.jpeg",
+        "images/infinity-grey-bq/img-1155.jpeg"
+      ]
     }
   }
 }
