@@ -399,6 +399,16 @@
         "images/oceanica-quartzite/img-1192.jpeg",
         "images/oceanica-quartzite/img-0572.jpeg"
       ]
+    },
+    "rusty-crystllo": {
+      "name": "Rusty crystllo",
+      "category": "Quartzite",
+      "description": "",
+      "images": [
+        "images/rusty-crystllo/img-1185.jpeg",
+        "images/rusty-crystllo/img-1193.jpeg",
+        "images/rusty-crystllo/img-0573.jpeg"
+      ]
     }
   }
 }
