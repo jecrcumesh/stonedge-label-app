@@ -443,6 +443,15 @@
       "images": [
         "images/orro-marine/d7f6a7d8-b0e8-484c-b3dd-6174eff2ceed.jpg"
       ]
+    },
+    "sonata-grey": {
+      "name": "Sonata Grey",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/sonata-grey/img-2579.jpeg",
+        "images/sonata-grey/f02fc60e-7d14-43a0-aee5-e216221120ee.jpg"
+      ]
     }
   }
 }
