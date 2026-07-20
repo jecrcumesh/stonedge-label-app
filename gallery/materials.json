@@ -426,6 +426,15 @@
       "images": [
         "images/calacutta-viola/5fc10e2d-0a00-4b3c-acb1-c53afac35481.jpeg"
       ]
+    },
+    "fior-di-bosco": {
+      "name": "Fior Di Bosco",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/fior-di-bosco/fbcb53f0-bfb8-4ea2-9a9b-9ebc2c0f7f55.jpg",
+        "images/fior-di-bosco/96881352-9a4c-4839-bc07-db9a3cff0047.jpg"
+      ]
     }
   }
 }
