@@ -418,6 +418,14 @@
         "images/belvedere-quartzite/00224c69-ab1e-4d39-a33f-a23a5b23f7b1.jpeg",
         "images/belvedere-quartzite/img-2538.jpeg"
       ]
+    },
+    "calacutta-viola": {
+      "name": "Calacutta Viola",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/calacutta-viola/5fc10e2d-0a00-4b3c-acb1-c53afac35481.jpeg"
+      ]
     }
   }
 }
