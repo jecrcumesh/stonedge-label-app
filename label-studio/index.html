@@ -2871,6 +2871,11 @@ var qrcode = function() {
     const v = id => $(id).value;
     const snap = {};
     PRODUCT_FIELD_IDS.forEach(id => snap[id] = v(id));
+    // captured per-item (not just "standing") so that if the Gallery Page URL is
+    // changed between adding different materials to the batch, each label keeps
+    // the URL that was active when *it* was added, instead of every label using
+    // whatever the field happens to say at print time.
+    snap.galleryBaseUrl = v('galleryBaseUrl');
     return snap;
   }
 
@@ -2960,7 +2965,7 @@ var qrcode = function() {
     return {
       companyName: v('companyName'), tagline: v('tagline'), logoSrc: $('labelLogoImg').src,
       contactNo: v('contactNo'), companyEmail: v('companyEmail'), companyWebsite: v('companyWebsite'),
-      qrCaption: v('qrCaption'), galleryBaseUrl: v('galleryBaseUrl')
+      qrCaption: v('qrCaption')
     };
   }
 
@@ -2977,7 +2982,7 @@ var qrcode = function() {
       const svg = area.querySelector('.batch-barcode-' + idx);
       const canvas = area.querySelector('.batch-qr-' + idx);
       if(svg) renderBarcode(svg, snap.barcodeValue);
-      if(canvas) renderQr(canvas, buildGalleryUrl(standing.galleryBaseUrl, snap.materialSlug));
+      if(canvas) renderQr(canvas, buildGalleryUrl(snap.galleryBaseUrl, snap.materialSlug));
     });
 
     document.body.classList.add('printing-batch');
