@@ -420,11 +420,13 @@
       ]
     },
     "calacutta-viola": {
-      "name": "Calacutta Viola",
+      "name": "Calacutta viola",
       "category": "Marble",
-      "description": "",
+      "description": "Calacatta Viola marble is a striking Italian natural stone used mainly for luxury interior design, featuring bold burgundy and violet veins on a white background. Its top uses include kitchen islands, bathroom vanities, and statement feature walls.",
       "images": [
-        "images/calacutta-viola/5fc10e2d-0a00-4b3c-acb1-c53afac35481.jpeg"
+        "images/calacutta-viola/5fc10e2d-0a00-4b3c-acb1-c53afac35481.jpeg",
+        "images/calacutta-viola/img-2592.jpeg",
+        "images/calacutta-viola/img-2593.jpeg"
       ]
     },
     "fior-di-bosco": {
