@@ -188,6 +188,90 @@
   .printer-guide summary{cursor:pointer;font-weight:600;font-size:13px;color:var(--ink);padding:4px 0;}
   .printer-guide[open] summary{margin-bottom:8px;}
   .printer-guide ol{margin:0;padding-left:18px;font-size:12.5px;color:var(--muted);line-height:1.7;}
+
+  /* =========================================================================
+     STRIP LABELS (152 x 16mm multi-up on a 6x4in / 152x101mm sheet)
+     Purely additive — does not modify any rule above, which still governs
+     the existing 152 x 101mm label and its batch printing untouched.
+     ========================================================================= */
+  .mode-bar{max-width:1280px;margin:0 auto;padding:0 24px 18px;}
+  .mode-bar-inner{
+    display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+    background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:12px 18px;box-shadow:0 8px 20px rgba(30,25,15,.08);
+  }
+  .mode-bar-label{font-family:'Poppins',sans-serif;font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);}
+  .mode-radio{display:flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink);cursor:pointer;font-weight:500;}
+  .mode-radio input{accent-color:var(--ink);cursor:pointer;}
+
+  .strip-app{
+    max-width:1280px;margin:0 auto;padding:0 24px 60px;
+    display:grid;grid-template-columns:minmax(340px,420px) 1fr;gap:26px;
+  }
+  @media (max-width:900px){ .strip-app{grid-template-columns:1fr;} }
+
+  /* one physical 152 x 101mm (6x4in) sheet — shares the big label's live-scale factor */
+  .strip-sheet-preview-wrap{width:calc(152mm * 2.55);height:calc(101mm * 2.55);overflow:hidden;margin-bottom:10px;}
+  .strip-sheet-preview-wrap .strip-sheet{transform:scale(2.55);transform-origin:top left;}
+  .strip-sheets-preview{display:flex;flex-direction:column;}
+
+  .strip-sheet{
+    width:152mm;height:101mm;box-sizing:border-box;
+    background:#fff;border:0.6mm solid var(--ink);
+    padding:2mm 3mm;
+    display:flex;flex-direction:column;
+    font-family:'Inter',sans-serif;color:var(--ink);
+  }
+  /* cut guide shown between every two strips on the same sheet — dashed line + scissors mark */
+  .strip-cutline{
+    flex:0 0 3mm;height:3mm;box-sizing:border-box;
+    display:flex;align-items:center;gap:1.5mm;
+    padding:0 1mm;
+  }
+  .strip-cutline .cline-seg{flex:1;border-top:0.3mm dashed #9a9488;}
+  .strip-cutline .cline-icon{flex:0 0 auto;font-size:3mm;line-height:1;color:#9a9488;}
+  .strip-sheet:empty::after{
+    content:'Add strip labels to see this sheet fill up';
+    margin:auto;font-size:4mm;color:#b7b2a5;text-align:center;
+  }
+  .strip-label{
+    width:100%;flex:0 0 16mm;height:16mm;box-sizing:border-box;
+    border:0.35mm solid var(--ink);border-radius:1mm;
+    display:flex;align-items:center;gap:4mm;padding:0 4mm;
+    overflow:hidden;
+  }
+  .strip-cell{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;}
+  .strip-cell.name-cell{flex:1.6;}
+  .strip-cell .slabel{font-family:'Poppins',sans-serif;font-weight:700;font-size:2.3mm;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);line-height:1.1;}
+  .strip-cell .sval{font-size:4.4mm;font-weight:600;line-height:1.15;margin-top:0.3mm;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+  .strip-row{
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+    background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 10px;
+  }
+  .strip-row-text{display:flex;flex-direction:column;font-size:12.5px;line-height:1.4;}
+  .strip-row-text b{font-size:13px;}
+  .strip-row-text span{color:var(--muted);font-size:11.5px;}
+
+  #stripPrintArea{display:none;}
+
+  @media print{
+    /* The mode bar is new UI chrome (like the topbar), so it's hidden on
+       every print — single label, batch, or strip — same as the topbar is
+       hidden above. This does not alter any existing print rule. */
+    .mode-bar{display:none !important;}
+
+    /* Only take effect while actively printing strip sheets; the existing
+       single-label and batch print rules above are untouched and still
+       apply exactly as before whenever this class isn't present. */
+    body.printing-strips .app{display:none !important;}
+    body.printing-strips .strip-app{display:none !important;}
+    body.printing-strips .mode-bar{display:none !important;}
+    body.printing-strips, body.printing-strips html{height:auto !important;}
+    body.printing-strips #stripPrintArea{display:block !important;}
+    body.printing-strips .strip-sheet-page{page-break-after:always;}
+    body.printing-strips .strip-sheet-page:last-child{page-break-after:auto;}
+  }
 </style>
 </head>
 <body>
@@ -199,6 +283,14 @@
     <p>Product label designer &amp; printer — 152 × 101 mm</p>
   </div>
 </header>
+
+<div class="mode-bar">
+  <div class="mode-bar-inner">
+    <span class="mode-bar-label">Label Type</span>
+    <label class="mode-radio"><input type="radio" name="labelMode" value="big" id="modeBig" checked> Big Label (152 × 101 mm)</label>
+    <label class="mode-radio"><input type="radio" name="labelMode" value="strip" id="modeStrip"> Strip Labels (152 × 16 mm, multi-up on a 6×4 in sheet)</label>
+  </div>
+</div>
 
 <div class="app">
 
@@ -271,7 +363,7 @@
     </div>
     <div class="field">
       <label>Contact No.</label>
-      <input type="tel" id="contactNo" value="+91 8238822833">
+      <input type="tel" id="contactNo" value="+91 9876543210">
     </div>
     <div class="field">
       <label>Email</label>
@@ -373,7 +465,56 @@
 
 </div>
 
+<!-- STRIP LABEL APP (152 x 16mm, multi-up on a 6x4in sheet) — additive sibling to
+     the big-label ".app" above; toggled by the Label Type switch, never edits it -->
+<div class="strip-app" id="stripApp" style="display:none;">
+
+  <!-- FORM PANEL -->
+  <div class="panel">
+    <h2>Strip Label Details</h2>
+    <div class="field">
+      <label>Product Name</label>
+      <input type="text" id="stripProductName" placeholder="e.g. Statuario Marble">
+    </div>
+    <div class="field">
+      <label>Lot No.</label>
+      <input type="text" id="stripLotNo" placeholder="e.g. LOT-2026-0451">
+    </div>
+    <div class="field">
+      <label>Quantity (Sqft)</label>
+      <input type="text" id="stripQtySqft" placeholder="e.g. 2345">
+    </div>
+    <div class="actions">
+      <button class="btn btn-ghost" id="stripClearBtn" style="width:100%;">Clear Fields</button>
+    </div>
+    <button class="btn btn-primary" id="stripAddBtn">➕ Add Strip to Sheet</button>
+    <p class="hint">Each strip is 152 × 16 mm — Product Name, Lot No. and Quantity (Sqft) only. Add as many as you need; they're tiled automatically onto 152 × 101 mm (6 × 4 in) sheets with a blank gap between every strip for clean cutting, and spill onto additional sheets once one is full.</p>
+
+    <h2 class="second">Saved Labels (<span id="savedStripCount">0</span>)</h2>
+    <p class="hint" style="margin-top:0;">Every strip you add is remembered here too, so next time you can click <b>Use</b> to reload it and just tweak the quantity, lot no. or name — no retyping from scratch.</p>
+    <div id="savedStripEmpty" class="hint" style="margin-top:0;">No saved labels yet.</div>
+    <div id="savedStripList" style="margin-top:10px;display:flex;flex-direction:column;gap:6px;"></div>
+
+    <h2 class="second">Queued Strips (<span id="stripCount">0</span>)</h2>
+    <div id="stripEmpty" class="hint" style="margin-top:0;">No strip labels queued yet.</div>
+    <div id="stripList" style="margin-top:10px;display:flex;flex-direction:column;gap:6px;"></div>
+    <div class="actions" style="margin-top:10px;">
+      <button class="btn btn-ghost" id="stripClearAllBtn">Clear All</button>
+      <button class="btn btn-primary" id="stripPrintBtn" style="background:var(--ink);" disabled>🖨️ Print Strip Sheet(s) (<span id="stripPrintCount">0</span>)</button>
+    </div>
+  </div>
+
+  <!-- PREVIEW PANEL -->
+  <div class="panel preview-panel">
+    <h2 style="align-self:flex-start;">Strip Sheet Preview</h2>
+    <div class="strip-sheets-preview" id="stripSheetsPreview"></div>
+    <p class="print-note">Each sheet is <b>152 × 101 mm (6 × 4 in)</b> — the same sticker stock as the big label. Strips stack top-to-bottom with a blank cut gap between them; once 5 strips fill a sheet, more strips continue automatically onto the next sheet.</p>
+  </div>
+
+</div>
+
 <div id="batchPrintArea"></div>
+<div id="stripPrintArea"></div>
 
 <script>
 /*! JsBarcode v3.12.3 | (c) Johan Lindell | MIT license */
@@ -2731,7 +2872,8 @@ var qrcode = function() {
   }
 
   function escapeHtml(str){
-    return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    if(str === undefined || str === null) return '';
+    return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
 
   function splitCaptionTwoLines(text){
@@ -2996,6 +3138,260 @@ var qrcode = function() {
 
   loadBatch();
   renderBatchList();
+
+  // ---------------- Strip Labels (152 x 16mm multi-up) ----------------
+  // Fully independent of the big label & batch code above: its own storage
+  // key, its own queue array, its own DOM nodes/ids. Nothing here is read
+  // by, or changes the behaviour of, any function above.
+  const STRIP_KEY = 'stonedge_label_studio_strip_v1';
+  const STRIPS_PER_SHEET = 5; // 5 x 16mm strips + the gaps between them fit a 101mm-tall sheet with room to spare
+  let stripQueue = [];
+
+  function loadStripQueue(){
+    try{
+      const raw = localStorage.getItem(STRIP_KEY);
+      if(raw) stripQueue = JSON.parse(raw);
+    }catch(e){ stripQueue = []; }
+    // migrate items queued under any earlier schema (single "qty" field, or the
+    // brief Pcs/Sqft split) — everything now consolidates into qtySqft only.
+    stripQueue = stripQueue.map(item => ({
+      productName: item.productName || '',
+      lotNo: item.lotNo || '',
+      qtySqft: item.qtySqft || item.qtyPcs || item.qty || ''
+    }));
+    saveStripQueue();
+  }
+  function saveStripQueue(){
+    try{ localStorage.setItem(STRIP_KEY, JSON.stringify(stripQueue)); }catch(e){}
+  }
+
+  function getStripSnapshot(){
+    return {
+      productName: $('stripProductName').value,
+      lotNo: $('stripLotNo').value,
+      qtySqft: $('stripQtySqft').value
+    };
+  }
+
+  function buildStripLabelNode(snap){
+    const el = document.createElement('div');
+    el.className = 'strip-label';
+    const qtyVal = snap.qtySqft ? (escapeHtml(snap.qtySqft) + ' Sqft') : '—';
+    el.innerHTML =
+      '<div class="strip-cell name-cell"><div class="slabel">Product Name</div><div class="sval">' + (escapeHtml(snap.productName) || '—') + '</div></div>' +
+      '<div class="strip-cell"><div class="slabel">Lot No.</div><div class="sval">' + (escapeHtml(snap.lotNo) || '—') + '</div></div>' +
+      '<div class="strip-cell qty-cell"><div class="slabel">Quantity</div><div class="sval">' + qtyVal + '</div></div>';
+    return el;
+  }
+
+  function buildCutLine(){
+    const el = document.createElement('div');
+    el.className = 'strip-cutline';
+    el.innerHTML = '<span class="cline-seg"></span><span class="cline-icon">✂︎</span><span class="cline-seg"></span>';
+    return el;
+  }
+
+  function buildStripSheet(items){
+    const sheet = document.createElement('div');
+    sheet.className = 'strip-sheet';
+    items.forEach((snap, i) => {
+      if(i > 0) sheet.appendChild(buildCutLine());
+      sheet.appendChild(buildStripLabelNode(snap));
+    });
+    return sheet;
+  }
+
+  function chunkStripQueue(){
+    const chunks = [];
+    for(let i = 0; i < stripQueue.length; i += STRIPS_PER_SHEET){
+      chunks.push(stripQueue.slice(i, i + STRIPS_PER_SHEET));
+    }
+    return chunks;
+  }
+
+  function renderStripSheetPreview(){
+    const wrap = $('stripSheetsPreview');
+    wrap.innerHTML = '';
+    const chunks = stripQueue.length ? chunkStripQueue() : [[]];
+    chunks.forEach(chunk => {
+      const scaleWrap = document.createElement('div');
+      scaleWrap.className = 'strip-sheet-preview-wrap';
+      scaleWrap.appendChild(buildStripSheet(chunk));
+      wrap.appendChild(scaleWrap);
+    });
+  }
+
+  function renderStripList(){
+    const wrap = $('stripList');
+    wrap.innerHTML = '';
+    $('stripEmpty').style.display = stripQueue.length === 0 ? 'block' : 'none';
+    stripQueue.forEach((item, i) => {
+      const row = document.createElement('div');
+      row.className = 'strip-row';
+      const title = item.productName ? escapeHtml(item.productName) : '<span style="color:var(--muted);">Untitled product</span>';
+      const qtyMeta = item.qtySqft ? (item.qtySqft + ' Sqft') : '';
+      const meta = [item.lotNo ? ('Lot ' + item.lotNo) : '', qtyMeta].filter(Boolean).map(escapeHtml).join(' · ');
+      row.innerHTML = '<div class="strip-row-text"><b>' + title + '</b><span>' + meta + '</span></div>' +
+                       '<button class="batch-remove" data-i="' + i + '" type="button" aria-label="Remove">×</button>';
+      wrap.appendChild(row);
+    });
+    wrap.querySelectorAll('.batch-remove').forEach(btn => {
+      btn.addEventListener('click', function(){
+        stripQueue.splice(parseInt(this.dataset.i, 10), 1);
+        saveStripQueue();
+        renderStripList();
+        renderStripSheetPreview();
+      });
+    });
+    $('stripCount').textContent = stripQueue.length;
+    $('stripPrintCount').textContent = stripQueue.length;
+    $('stripPrintBtn').disabled = stripQueue.length === 0;
+  }
+
+  function clearStripFields(){
+    $('stripProductName').value = '';
+    $('stripLotNo').value = '';
+    $('stripQtySqft').value = '';
+  }
+
+  $('stripClearBtn').addEventListener('click', clearStripFields);
+
+  $('stripAddBtn').addEventListener('click', function(){
+    const snap = getStripSnapshot();
+    if(!snap.productName.trim()){
+      $('stripProductName').focus();
+      return;
+    }
+    stripQueue.push(snap);
+    saveStripQueue();
+    renderStripList();
+    renderStripSheetPreview();
+    upsertSavedStripLabel(snap);
+    clearStripFields();
+    $('stripProductName').focus();
+  });
+
+  $('stripClearAllBtn').addEventListener('click', function(){
+    if(stripQueue.length && !confirm('Clear all ' + stripQueue.length + ' queued strip label(s)?')) return;
+    stripQueue = [];
+    saveStripQueue();
+    renderStripList();
+    renderStripSheetPreview();
+  });
+
+  // ---------------- Saved Labels (reusable library, separate from the print queue) ----------------
+  // Survives "Clear All" on the queue above — a little library of every strip
+  // label you've ever added, so a repeat product can be reloaded and just
+  // have its quantity (or lot no., or name) tweaked instead of retyped.
+  const STRIP_SAVED_KEY = 'stonedge_label_studio_strip_saved_v1';
+  let savedStripLabels = [];
+
+  function loadSavedStripLabels(){
+    try{
+      const raw = localStorage.getItem(STRIP_SAVED_KEY);
+      if(raw) savedStripLabels = JSON.parse(raw);
+    }catch(e){ savedStripLabels = []; }
+    savedStripLabels = savedStripLabels.map(item => ({
+      productName: item.productName || '',
+      lotNo: item.lotNo || '',
+      qtySqft: item.qtySqft || item.qtyPcs || item.qty || ''
+    }));
+  }
+  function saveSavedStripLabels(){
+    try{ localStorage.setItem(STRIP_SAVED_KEY, JSON.stringify(savedStripLabels)); }catch(e){}
+  }
+
+  function upsertSavedStripLabel(snap){
+    if(!snap.productName.trim()) return;
+    const key = snap.productName.trim().toLowerCase();
+    const idx = savedStripLabels.findIndex(s => s.productName.trim().toLowerCase() === key);
+    if(idx >= 0) savedStripLabels[idx] = snap; else savedStripLabels.push(snap);
+    saveSavedStripLabels();
+    renderSavedStripList();
+  }
+
+  function renderSavedStripList(){
+    const wrap = $('savedStripList');
+    wrap.innerHTML = '';
+    $('savedStripEmpty').style.display = savedStripLabels.length === 0 ? 'block' : 'none';
+    savedStripLabels.forEach((item, i) => {
+      const row = document.createElement('div');
+      row.className = 'strip-row';
+      const title = item.productName ? escapeHtml(item.productName) : '<span style="color:var(--muted);">Untitled product</span>';
+      const meta = [item.lotNo ? ('Lot ' + item.lotNo) : '', item.qtySqft ? (item.qtySqft + ' Sqft') : ''].filter(Boolean).map(escapeHtml).join(' · ');
+      row.innerHTML = '<div class="strip-row-text"><b>' + title + '</b><span>' + meta + '</span></div>' +
+                       '<div style="display:flex;gap:6px;flex-shrink:0;">' +
+                       '<button class="btn btn-ghost strip-use-btn" data-i="' + i + '" type="button" style="padding:6px 10px;font-size:12px;">Use</button>' +
+                       '<button class="batch-remove strip-saved-remove" data-i="' + i + '" type="button" aria-label="Remove saved label">×</button>' +
+                       '</div>';
+      wrap.appendChild(row);
+    });
+    wrap.querySelectorAll('.strip-use-btn').forEach(btn => {
+      btn.addEventListener('click', function(){
+        const item = savedStripLabels[parseInt(this.dataset.i, 10)];
+        if(!item) return;
+        $('stripProductName').value = item.productName || '';
+        $('stripLotNo').value = item.lotNo || '';
+        $('stripQtySqft').value = item.qtySqft || '';
+        $('stripProductName').focus();
+      });
+    });
+    wrap.querySelectorAll('.strip-saved-remove').forEach(btn => {
+      btn.addEventListener('click', function(){
+        savedStripLabels.splice(parseInt(this.dataset.i, 10), 1);
+        saveSavedStripLabels();
+        renderSavedStripList();
+      });
+    });
+    $('savedStripCount').textContent = savedStripLabels.length;
+  }
+
+  $('stripPrintBtn').addEventListener('click', function(){
+    if(stripQueue.length === 0) return;
+    const area = $('stripPrintArea');
+    area.innerHTML = '';
+    chunkStripQueue().forEach(chunk => {
+      const sheet = buildStripSheet(chunk);
+      sheet.classList.add('strip-sheet-page');
+      area.appendChild(sheet);
+    });
+    document.body.classList.add('printing-strips');
+    window.print();
+  });
+
+  window.addEventListener('afterprint', function(){
+    document.body.classList.remove('printing-strips');
+    $('stripPrintArea').innerHTML = '';
+  });
+
+  loadStripQueue();
+  renderStripList();
+  renderStripSheetPreview();
+  loadSavedStripLabels();
+  renderSavedStripList();
+
+  // ---------------- Label Type switch (Big 152x101mm vs Strip 152x16mm) ----------------
+  const MODE_KEY = 'stonedge_label_studio_mode_v1';
+  function applyMode(mode){
+    const bigApp = document.querySelector('.app');
+    const stripApp = $('stripApp');
+    if(mode === 'strip'){
+      bigApp.style.display = 'none';
+      stripApp.style.display = 'grid';
+      $('modeStrip').checked = true;
+    } else {
+      bigApp.style.display = '';
+      stripApp.style.display = 'none';
+      $('modeBig').checked = true;
+    }
+    try{ localStorage.setItem(MODE_KEY, mode); }catch(e){}
+  }
+  $('modeBig').addEventListener('change', function(){ if(this.checked) applyMode('big'); });
+  $('modeStrip').addEventListener('change', function(){ if(this.checked) applyMode('strip'); });
+
+  let savedMode = 'big';
+  try{ savedMode = localStorage.getItem(MODE_KEY) || 'big'; }catch(e){}
+  applyMode(savedMode);
 
   load();
   render();

@@ -50,6 +50,21 @@ Browsers can't send raw printer commands (TSPL/ZPL) directly to a printer for se
 **B. Silent/automatic printing without the dialog (e.g. triggered by a barcode scan, or a "click and it just prints" workflow)**
 This needs a small local print-agent (the most common free option is **QZ Tray**) running on the print station's PC, which lets the web page send a print job straight to the printer over USB or network without any dialog box. This is a worthwhile next step if you're printing many labels a day and want to skip the dialog each time — happy to add QZ Tray integration to the app if you'd like it.
 
-## 5. Files in this delivery
+## 5. Strip labels (152 × 16 mm, multiple products on one 6×4 in sheet)
+For cases where you just need to identify pieces quickly — Product Name, Lot No. and Quantity (Sqft) only — without the full 152×101mm label, use the **Label Type** switch at the top of the page:
+
+1. Click **Strip Labels (152 × 16 mm, multi-up on a 6×4 in sheet)**. This swaps the whole page to a separate, independent form — it never touches or affects the big 152×101mm label or its batch queue, which are exactly as they were before.
+2. Fill in **Product Name**, **Lot No.** and **Quantity (Sqft)**, then click **➕ Add Strip to Sheet**. Repeat for every piece/product you need a strip for — the fields clear automatically after each add.
+3. The **Strip Sheet Preview** on the right shows exactly how the sheets will print: each strip is 152 mm wide × 16 mm tall, with a dashed cut-line and scissors mark between every strip so they cut apart cleanly. Five strips fit per 152×101mm (6×4 in) sheet — once a sheet is full, additional strips automatically continue onto the next sheet.
+4. Click **🖨️ Print Strip Sheet(s)** to send every queued strip as one print job — set your printer's page size to 152×101mm (6×4 in), same as the big label, and "Pages per sheet" to 1.
+5. Switch back to **Big Label (152 × 101 mm)** at any time — your strip queue is saved automatically and is still there when you return to strip mode, exactly like the big label's batch queue.
+
+### Reusing a label later (Saved Labels)
+Every strip you add is also remembered in a **Saved Labels** list, separate from the print queue — so it's still there even after you **Clear All** the queue or print a job. To reuse one later (e.g. the same product with a new quantity):
+1. Find it in **Saved Labels** and click **Use** — this loads its Product Name, Lot No. and Quantity back into the form.
+2. Change whatever's different (usually just the Quantity), then click **➕ Add Strip to Sheet** as normal.
+3. Adding a strip with the same Product Name as an existing saved label updates that saved entry instead of creating a duplicate — so your saved list stays one entry per product.
+
+## 6. Files in this delivery
 - `index.html` — the app (open directly or deploy to GitHub Pages)
 - `preview_screenshot.png` — a rendered sample of the printed label at true size, for quick reference
