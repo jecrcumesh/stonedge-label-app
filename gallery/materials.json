@@ -8,13 +8,462 @@
   "website": "http://www.thestonedge.com/",
   "materials": {
     "burberry-beige": {
-      "name": "Burberry Beige",
+      "name": "Burberry beige",
       "category": "Marble",
-      "description": "Imported marble with a warm beige tone and soft natural veining. Popular for flooring, wall cladding, and countertops.",
+      "description": "Burberry Beige Marble is an elegant, premium natural stone celebrated for its soft creamy base and delicate flowing veins in taupe, ivory, and light grey. Sourced primarily from quarries in Turkey or Italy, it is highly sought after by interior designers for creating warm, sophisticated, and ageless luxury in both residential and commercial spaces.",
       "images": [
         "images/burberry-beige/slab-1.jpg",
         "images/burberry-beige/wall-application.jpg",
-        "images/burberry-beige/floor-application.jpg"
+        "images/burberry-beige/floor-application.jpg",
+        "images/burberry-beige/img-1334.jpeg",
+        "images/burberry-beige/img-1335.jpeg",
+        "images/burberry-beige/img-1336.jpeg",
+        "images/burberry-beige/img-1337.jpeg",
+        "images/burberry-beige/img-1338.jpeg"
+      ]
+    },
+    "cream-karaman": {
+      "name": "Cream karaman",
+      "category": "Marble",
+      "description": "Cream Karaman is a warm, Turkish marble with a soft beige base, smoky grey tones, and delicate white veining. Quarried in Turkey, this natural stone brings a bright, timeless glow to your home. It is a great and durable choice for your kitchen counters, bathroom vanities, or floors.",
+      "images": [
+        "images/cream-karaman/c3.jpeg",
+        "images/cream-karaman/c2.jpeg",
+        "images/cream-karaman/c1.jpeg",
+        "images/cream-karaman/a99a24c3-536c-4018-99cf-21e2f6a6bfa8.jpeg",
+        "images/cream-karaman/a22f5197-e15f-4e5b-97bb-c10cd1f030cd.jpeg",
+        "images/cream-karaman/6dfe61ef-5583-4e4b-ac59-2abeeae6bfd4.jpeg",
+        "images/cream-karaman/2e00692b-9b71-4f2d-b27b-2e6dac49e074.jpeg",
+        "images/cream-karaman/59e522ed-0bb0-4ed6-ae66-eff75bca1186.jpeg",
+        "images/cream-karaman/3e81a73a-149d-43b6-86e5-7da50c379d1d.jpeg",
+        "images/cream-karaman/11601a4e-d133-4209-a554-c833b4a367a0.jpeg",
+        "images/cream-karaman/271d4728-0992-4b39-97c1-ab66a621a990.jpeg",
+        "images/cream-karaman/img-4301.jpeg",
+        "images/cream-karaman/5cf12a19-e352-4578-a8c7-927c8c80bb17.jpeg",
+        "images/cream-karaman/34cefc15-6869-49e5-b9b8-34823480604b.jpeg",
+        "images/cream-karaman/93cbc1e6-23a6-437c-88d3-c7d9065aa24d.jpeg",
+        "images/cream-karaman/20a2eab9-fb73-4d71-8ce6-4dfca875276d.jpeg",
+        "images/cream-karaman/7895c3cb-dd37-41b6-a4e6-56e10df5a088.jpeg",
+        "images/cream-karaman/7895c3cb-dd37-41b6-a4e6-56e10df5a088-1.jpg",
+        "images/cream-karaman/img-2551.jpeg"
+      ]
+    },
+    "pluto-white": {
+      "name": "Pluto White",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/pluto-white/p-1.jpeg",
+        "images/pluto-white/p4.jpeg",
+        "images/pluto-white/p3.jpeg"
+      ]
+    },
+    "green-lavante": {
+      "name": "Green Lavante",
+      "category": "Marble",
+      "description": "Green Lavante is a striking natural marble known for its rich, deep green tones and intricate white veins that mimic a peaceful forest landscape.",
+      "images": [
+        "images/green-lavante/img-1084.jpeg",
+        "images/green-lavante/img-1085.jpeg",
+        "images/green-lavante/img-1086.jpeg",
+        "images/green-lavante/img-1087.jpeg",
+        "images/green-lavante/img-1088.jpeg",
+        "images/green-lavante/img-1089.jpeg",
+        "images/green-lavante/img-2145.jpeg"
+      ]
+    },
+    "red-travartine": {
+      "name": "Red travartine",
+      "category": "Marble",
+      "description": "14                    Red travertine is a striking, warm-toned natural stone formed by hot springs. It is characterized by deep red, terracotta, and earthy sienna hues, layered with natural surface pores and parallel veins. Often sourced from Iran, it is a luxurious, highly durable choice for statement floors, wall cladding, and bathroom vanities",
+      "images": [
+        "images/red-travartine/img-6139.jpeg",
+        "images/red-travartine/img-6140.jpeg",
+        "images/red-travartine/img-9743.jpeg"
+      ]
+    },
+    "red-lavante": {
+      "name": "Red lavante",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/red-lavante/img-8587.jpeg",
+        "images/red-lavante/img-8636.jpeg",
+        "images/red-lavante/img-8637.jpeg",
+        "images/red-lavante/c8369a8d-4a21-4218-8dce-155bd1f07034-collage.jpeg",
+        "images/red-lavante/img-7188.jpeg",
+        "images/red-lavante/img-7189.jpeg",
+        "images/red-lavante/img-7190.jpeg",
+        "images/red-lavante/img-7190-1.jpg",
+        "images/red-lavante/photo-2026-04-09-19-12-55.jpeg",
+        "images/red-lavante/img-1074.jpeg",
+        "images/red-lavante/img-1075.jpeg",
+        "images/red-lavante/img-1076.jpeg",
+        "images/red-lavante/img-1077.jpeg"
+      ]
+    },
+    "rosso-statuario": {
+      "name": "Rosso statuario",
+      "category": "Marble",
+      "description": "Rosso Statuario marble is a premium, highly exclusive variation featuring a warm cream or light base overlaid with cascading rose gold and pinkish veins, providing a soft yet luxurious aesthetic suitable for high-end interior applications like statement wall panels, flooring, and bathroom vanities.",
+      "images": [
+        "images/rosso-statuario/img-1069.jpeg",
+        "images/rosso-statuario/img-1056.jpeg",
+        "images/rosso-statuario/img-1070.jpeg",
+        "images/rosso-statuario/img-1071.jpeg",
+        "images/rosso-statuario/img-1072.jpeg"
+      ]
+    },
+    "doretto-travertine": {
+      "name": "Doretto Travertine",
+      "category": "Marble",
+      "description": "Doretto Travertine is an elegant, premium sedimentary limestone characterized by its signature earthy tones, natural surface pits, and linear or cloud-like patterns.",
+      "images": [
+        "images/doretto-travertine/5c21d150-687c-4dc6-87ce-5e74e77b0943.jpeg",
+        "images/doretto-travertine/bf3cc3af-ad8e-4184-aa4c-24cc88927f40.jpeg",
+        "images/doretto-travertine/26f920ad-3f0f-4e47-a9e1-5d98e2e7dc2f.jpeg",
+        "images/doretto-travertine/46fdf3fa-0318-4a3b-b423-34dfa0676231.jpeg",
+        "images/doretto-travertine/img-1322.jpeg",
+        "images/doretto-travertine/img-1323.jpeg",
+        "images/doretto-travertine/img-1325.jpeg"
+      ]
+    },
+    "armani-brown": {
+      "name": "Armani Brown",
+      "category": "Marble",
+      "description": "Armani Brown Marble (also known as Bronze Armani) is a premium natural stone featuring a rich, dark-chocolate base and delicate, light veins. Quarried mainly in Turkey, Italy, and Spain, it is widely used in high-end projects for its warmth and luxurious aesthetic",
+      "images": [
+        "images/armani-brown/img-7201.jpeg",
+        "images/armani-brown/img-7215.jpeg",
+        "images/armani-brown/img-7218.jpeg",
+        "images/armani-brown/img-7222.jpeg",
+        "images/armani-brown/img-7231.jpeg",
+        "images/armani-brown/img-7234.jpeg"
+      ]
+    },
+    "beige-travertine": {
+      "name": "Beige Travertine",
+      "category": "Marble",
+      "description": "+14                    Beige travertine marble is a natural sedimentary stone quarried from mineral-rich geothermal springs, celebrated for its warm, creamy neutral tones. It is highly prized for its unique, subtly pitted surface and natural linear bands. This durable, rustic-chic stone is incredibly versatile, making it perfect for indoor flooring, bathroom vanities, and outdoor patio surrounds.",
+      "images": [
+        "images/beige-travertine/5620d3e4-ff83-410b-84fa-0637273d59ae.jpeg",
+        "images/beige-travertine/img-1251.jpeg",
+        "images/beige-travertine/img-1270.jpeg",
+        "images/beige-travertine/img-1271.jpeg",
+        "images/beige-travertine/img-1272.jpeg",
+        "images/beige-travertine/img-1273.jpeg"
+      ]
+    },
+    "taj-mahal": {
+      "name": "Taj Mahal",
+      "category": "Marble",
+      "description": "Taj Mahal quartzite is a premium, highly durable natural stone quarried in Brazil. Named after the iconic Indian monument, it features a creamy, off-white background with soft, subtle gold and taupe veins. It offers the elegant look of marble with the exceptional strength and heat resistance of granite",
+      "images": [
+        "images/taj-mahal/img-8252.jpeg",
+        "images/taj-mahal/34b96210-1ea5-4a0b-a27e-f4e7e7d47b21.jpeg",
+        "images/taj-mahal/img-1404.jpeg",
+        "images/taj-mahal/img-1405.jpeg",
+        "images/taj-mahal/img-1406.jpeg",
+        "images/taj-mahal/img-1408.jpeg",
+        "images/taj-mahal/img-1409.jpeg",
+        "images/taj-mahal/img-0454.jpeg",
+        "images/taj-mahal/img-0455.jpeg"
+      ]
+    },
+    "pluto-white-1": {
+      "name": "Pluto White",
+      "category": "Marble",
+      "description": "Pluto White marble is a premium, highly durable natural stone known for its bright white background and subtle, elegant veining. Quarried primarily in India, this polished marble is a popular, cost-effective choice for modern interior flooring and wall cladding.",
+      "images": [
+        "images/pluto-white-1/img-1091.jpeg",
+        "images/pluto-white-1/img-1093.jpeg",
+        "images/pluto-white-1/img-1092.jpeg"
+      ]
+    },
+    "tempest-grey-organza-finish": {
+      "name": "Tempest grey organza finish",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/tempest-grey-organza-finish/img-1189.jpeg",
+        "images/tempest-grey-organza-finish/img-1317.jpg",
+        "images/tempest-grey-organza-finish/img-1182.jpeg"
+      ]
+    },
+    "moon-grey": {
+      "name": "Moon Grey",
+      "category": "Marble",
+      "description": "Moon Grey marble is a premium natural stone featuring a soft, muted grey base, delicate white and silver veining, and cloudy, natural patterns. It is highly prized in modern architecture for its calm, sophisticated aesthetic and mirror-like polish, making it ideal for luxury flooring, wall cladding, and countertops.",
+      "images": [
+        "images/moon-grey/img-1298.jpeg",
+        "images/moon-grey/img-1300.jpeg",
+        "images/moon-grey/img-1301.jpeg"
+      ]
+    },
+    "michael-angelo": {
+      "name": "Michael Angelo",
+      "category": "Marble",
+      "description": "Michelangelo marble is a premium, luminous white natural stone prized for its dramatic grey, beige, or golden veining. Often quarried in Italy and Portugal, this luxurious, dense material is widely used for upscale flooring, kitchen countertops, and feature walls in high-end interior design.",
+      "images": [
+        "images/michael-angelo/img-1278.jpeg",
+        "images/michael-angelo/img-1279.jpeg",
+        "images/michael-angelo/img-2239.jpeg",
+        "images/michael-angelo/73817899-4cd5-4912-ac88-c56f4148d42f.jpg"
+      ]
+    },
+    "agora-beige": {
+      "name": "Agora beige",
+      "category": "Marble",
+      "description": "Agora Beige marble is a durable, premium natural stone quarried in Turkey, characterized by a smooth, creamy off-white background and delicate, subtle veining. Its high density, scratch resistance, and uniform, light palette make it a luxurious yet practical choice for heavy-traffic indoor and outdoor spaces.",
+      "images": [
+        "images/agora-beige/img-1236.jpeg",
+        "images/agora-beige/img-1237.jpeg",
+        "images/agora-beige/img-1245.jpeg",
+        "images/agora-beige/img-1246.jpeg",
+        "images/agora-beige/img-1247.jpeg"
+      ]
+    },
+    "camouflage": {
+      "name": "Camouflage",
+      "category": "Marble",
+      "description": "Camouflage marble is a premium, natural breccia stone quarried primarily in Albania and Italy, famous for its organic, blended patterns that mimic military camouflage. It is highly prized for luxury interiors due to its unique combination of earthy and neutral tones.",
+      "images": [
+        "images/camouflage/img-0441.jpg",
+        "images/camouflage/img-3391.jpeg",
+        "images/camouflage/img-3398.jpeg",
+        "images/camouflage/img-0453.jpeg",
+        "images/camouflage/img-2544.jpeg",
+        "images/camouflage/img-2545.jpeg",
+        "images/camouflage/img-0442.jpg"
+      ]
+    },
+    "chocolate-travertine": {
+      "name": "Chocolate travertine",
+      "category": "Marble",
+      "description": "Chocolate travertine marble is a luxurious, naturally porous limestone celebrated for its rich, earthy brown tones and signature veining. Quarried primarily in Iran and Italy, it is a highly durable and aesthetic choice for high-end wall cladding, flooring, and outdoor spaces.",
+      "images": [
+        "images/chocolate-travertine/img-1343.jpeg",
+        "images/chocolate-travertine/img-1348.jpeg",
+        "images/chocolate-travertine/img-1349.jpeg",
+        "images/chocolate-travertine/img-1350.jpeg",
+        "images/chocolate-travertine/img-1366.jpeg"
+      ]
+    },
+    "monalisa": {
+      "name": "Monalisa",
+      "category": "Marble",
+      "description": "Monalisa granite (often referred to as Monalisa white or cream granite) is an exotic natural stone quarried primarily in Rajasthan, India. It is celebrated for its soft, neutral off-white or beige background and intricate, flowing veins of gray, gold, and earthy browns.",
+      "images": [
+        "images/monalisa/img-0376.jpeg",
+        "images/monalisa/img-1393.jpeg",
+        "images/monalisa/img-1394.jpeg",
+        "images/monalisa/img-1395.jpeg",
+        "images/monalisa/img-1397.jpeg",
+        "images/monalisa/img-1396.jpeg"
+      ]
+    },
+    "sky-storm-bq": {
+      "name": "Sky Storm BQ",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/sky-storm-bq/img-1147.jpeg",
+        "images/sky-storm-bq/img-1148.jpeg",
+        "images/sky-storm-bq/img-0485.jpeg"
+      ]
+    },
+    "rosso-allure-bq": {
+      "name": "Rosso Allure BQ",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/rosso-allure-bq/img-0487.jpg",
+        "images/rosso-allure-bq/img-0486.jpg",
+        "images/rosso-allure-bq/img-1149.jpeg"
+      ]
+    },
+    "leopard-green-bq": {
+      "name": "Leopard Green BQ",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/leopard-green-bq/img-1156.jpeg",
+        "images/leopard-green-bq/img-1158.jpeg",
+        "images/leopard-green-bq/img-0488.jpeg",
+        "images/leopard-green-bq/img-1156-1.jpg",
+        "images/leopard-green-bq/img-1158-1.jpg",
+        "images/leopard-green-bq/img-0488-1.jpg"
+      ]
+    },
+    "blue-azola": {
+      "name": "Blue Azola",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/blue-azola/img-0419.jpeg",
+        "images/blue-azola/img-2546.jpeg",
+        "images/blue-azola/img-2547.jpeg"
+      ]
+    },
+    "blue-roma": {
+      "name": "Blue Roma",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/blue-roma/img-3419.jpeg",
+        "images/blue-roma/img-2539.jpeg",
+        "images/blue-roma/img-2548.jpeg",
+        "images/blue-roma/img-2539-1.jpg",
+        "images/blue-roma/img-2548-1.jpg"
+      ]
+    },
+    "grey-travertine": {
+      "name": "Grey Travertine",
+      "category": "Marble",
+      "description": "Grey travertine marble is a stunning natural stone formed by flowing mineral spring water. It features cool, silver-grey tones and beautiful sweeping lines.",
+      "images": [
+        "images/grey-travertine/img-2549.jpeg",
+        "images/grey-travertine/img-2550.jpeg"
+      ]
+    },
+    "mirage-black": {
+      "name": "Mirage black",
+      "category": "Marble",
+      "description": "Black Mirage marble is a luxurious stone. It has a deep, dark, almost obsidian-black base. It is famous for its straight, parallel lines. These sharp lines shine in bright colors like gold, copper, and white. They often cross at sharp angles. This creates a stunning contrast.",
+      "images": [
+        "images/mirage-black/img-2553.jpeg"
+      ]
+    },
+    "white-travertine": {
+      "name": "White travertine",
+      "category": "Marble",
+      "description": "White travertine marble is a stunning natural stone known for its bright color and tiny, natural surface holes. It mixes an ancient, rustic look with a clean, modern style. You can see this beautiful stone in White Travertine Marble at Best Price in India or read about how it forms in the Wikipedia.",
+      "images": [
+        "images/white-travertine/img-2554.jpeg",
+        "images/white-travertine/img-2555.jpeg"
+      ]
+    },
+    "fusion-thunder-bq": {
+      "name": "Fusion Thunder BQ",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/fusion-thunder-bq/img-1159.jpeg",
+        "images/fusion-thunder-bq/img-0567.jpeg"
+      ]
+    },
+    "infinity-grey-bq": {
+      "name": "Infinity grey BQ",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/infinity-grey-bq/img-1145.jpeg",
+        "images/infinity-grey-bq/img-1146.jpeg",
+        "images/infinity-grey-bq/img-1155.jpeg"
+      ]
+    },
+    "cristallo-gold": {
+      "name": "Cristallo gold",
+      "category": "Quartzite",
+      "description": "",
+      "images": [
+        "images/cristallo-gold/img-1151.jpeg",
+        "images/cristallo-gold/img-0568.jpeg",
+        "images/cristallo-gold/img-0569.jpeg"
+      ]
+    },
+    "yellosiena": {
+      "name": "Yellosiena",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/yellosiena/img-0786.jpeg",
+        "images/yellosiena/img-0787.jpeg"
+      ]
+    },
+    "palladiana-terra": {
+      "name": "Palladiana terra",
+      "category": "Quartzite",
+      "description": "",
+      "images": [
+        "images/palladiana-terra/img-1188.jpeg",
+        "images/palladiana-terra/img-0571.jpeg"
+      ]
+    },
+    "oceanica-quartzite": {
+      "name": "Oceanica quartzite",
+      "category": "Quartzite",
+      "description": "",
+      "images": [
+        "images/oceanica-quartzite/img-1184.jpeg",
+        "images/oceanica-quartzite/img-1192.jpeg",
+        "images/oceanica-quartzite/img-0572.jpeg"
+      ]
+    },
+    "rusty-crystllo": {
+      "name": "Rusty crystllo",
+      "category": "Quartzite",
+      "description": "",
+      "images": [
+        "images/rusty-crystllo/img-1185.jpeg",
+        "images/rusty-crystllo/img-1193.jpeg",
+        "images/rusty-crystllo/img-0573.jpeg"
+      ]
+    },
+    "belvedere-quartzite": {
+      "name": "Belvedere quartzite",
+      "category": "Quartzite",
+      "description": "",
+      "images": [
+        "images/belvedere-quartzite/00224c69-ab1e-4d39-a33f-a23a5b23f7b1.jpeg",
+        "images/belvedere-quartzite/img-2538.jpeg"
+      ]
+    },
+    "calacutta-viola": {
+      "name": "Calacutta viola.",
+      "category": "Marble",
+      "description": "Calacatta Viola marble is a striking Italian natural stone used mainly for luxury interior design, featuring bold burgundy and violet veins on a white background. Its top uses include kitchen islands, bathroom vanities, and statement feature walls.",
+      "images": [
+        "images/calacutta-viola/5fc10e2d-0a00-4b3c-acb1-c53afac35481.jpeg",
+        "images/calacutta-viola/img-2592.jpeg",
+        "images/calacutta-viola/img-2593.jpeg",
+        "images/calacutta-viola/img-2592-1.jpg",
+        "images/calacutta-viola/img-2593-1.jpg"
+      ]
+    },
+    "fior-di-bosco": {
+      "name": "Fior Di Bosco",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/fior-di-bosco/fbcb53f0-bfb8-4ea2-9a9b-9ebc2c0f7f55.jpg",
+        "images/fior-di-bosco/96881352-9a4c-4839-bc07-db9a3cff0047.jpg"
+      ]
+    },
+    "orro-marine": {
+      "name": "Orro Marine",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/orro-marine/d7f6a7d8-b0e8-484c-b3dd-6174eff2ceed.jpg"
+      ]
+    },
+    "sonata-grey": {
+      "name": "Sonata Grey",
+      "category": "Marble",
+      "description": "",
+      "images": [
+        "images/sonata-grey/img-2579.jpeg",
+        "images/sonata-grey/f02fc60e-7d14-43a0-aee5-e216221120ee.jpg"
+      ]
+    },
+    "calacutta-violaa": {
+      "name": "Calacutta violaa",
+      "category": "Marble",
+      "description": "Calacatta Viola marble is a striking Italian natural stone used mainly for luxury interior design, featuring bold burgundy and violet veins on a white background. Its top uses include kitchen islands, bathroom vanities, and statement feature walls.",
+      "images": [
+        "images/calacutta-violaa/img-2592.jpeg",
+        "images/calacutta-violaa/img-2593.jpeg"
       ]
     }
   }
